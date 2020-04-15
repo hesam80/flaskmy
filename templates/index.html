@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index page</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+	<h1>index page {{number}}</h1>
+	<li><a href="{{url_for('result')}}" target="_blank">goto result</a></li>
+	<li><a href="{{url_for('weather')}}" target="_blank"></a>goto weather</li>
+	<li><a href="{{url_for('result')}}" target="_blank">goto result</a></li>
+	<form  class="form-inline" action="{{url_for('result')}}" method="get" value="">
+		<input type="text" value="insert a number">
+		<input type="submit" value="send">
+	</form>
+</body>
+</html>
