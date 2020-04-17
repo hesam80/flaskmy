@@ -21,4 +21,5 @@ for i in range(sheet.ncols):
   
 #z=np.array(sheet.cell_value(j,i)).reshape((sheet.ncols,sheet.nrows))
 		#print("z= ",z)
-print("g=",g)
+#print("g=",g)
+g2=np.array([])
