@@ -1,5 +1,9 @@
 from flask import Flask, flash, redirect, render_template, request, url_for
 import random
+import pandas as pd
+from pandas import ExcelWriter
+from pandas import ExcelFile
+from pandas import read_excel
 #Create instance of Flask App
 app = Flask(__name__)
  
@@ -21,6 +25,10 @@ def success():
 def resultst():
 	num=random.randint(1,12)
 	return render_template('resultst.html', number=num)
+
+
+
+
 #Running and Controlling the script
 if (__name__ =="__main__"):
  app.run(debug=True)

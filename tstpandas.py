@@ -1,5 +1,8 @@
 from flask import Flask ,render_template, request, url_for, flash,session
-import pandas as pd 
+import pandas as pd
+from pandas import ExcelWriter
+from pandas import ExcelFile
+from pandas import read_excel 
 
 
 
@@ -20,12 +23,10 @@ app=Flask(__name__)
 @app.route("/")
 def excel():
 	
-    df=pd.read_excel('dabiraan aval.xlsx') 
-    sheet=df.head() 
-    sotoon = df.info()
-    datats=[]
+    df= pd.read_excel('tst.xlsx',0) 
+
    # return render_template('excelpd.html',sheet=sheet , sotoon=sotoon)
-    return f"this sheet {sheet}"
+   return f"mandeh {df['mandeh']}"
 
 # @app.route("/l")
 # def excell():
