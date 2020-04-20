@@ -1,6 +1,11 @@
+#!C:\Users\Pars\AppData\Local\Programs\Python\Python38-32\python.exe
 from numpy import *
 import numpy as np
 import numpy
+print("Content-Type: text/html\n charset:utf-8\n")
+def hello(request):
+    return HttpResponse("Hello world")
+    print("Content-Type: text/html\n charset:utf-8\n")
 #numpy.loadtxt(fname, dtype=<class 'float'7gt;, comments='#', delimiter=None, converters=None, skiprows=0, usecols=None, unpack=False, ndmin=0, encoding='bytes')
 
 # Two matrices are initialized by value
@@ -21,5 +26,4 @@ print("z= ",z)
 a = np.arange(12).reshape((3,4))
 print ("a = ",a)
 practice_metrice = np.array(range(12)).reshape(3,4)
-print("practice_metrice is ",practice_metrice)
-
+print("the practice_metrice is ",practice_metrice)

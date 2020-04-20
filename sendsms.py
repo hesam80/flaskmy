@@ -1,5 +1,5 @@
 from flask import Flask ,render_template, request, url_for, flash,session
-import requests
+import requests , random
 
 """
 inja khode kave neGAR CODE DADE
@@ -17,11 +17,12 @@ def send_sms(receptor,message):
 	print("message",message)
 
 #send_sms('09368663893','HI DEAR')
-# app = Flask(__name__)
+app = Flask(__name__)
 
-# @app.route('/')
-# def view():
-# 	return render_template(tt.html)
+@app.route('/')
+def view():
+	num = random.randint(1,200)
+	return render_template('tt.html',number=num)
 	
 
 
@@ -29,5 +30,5 @@ def send_sms(receptor,message):
 # def view():
 # 	return "hi there"
 
-# if(__name__=="__main__"):
-# 	app.run(debug=True)
+if(__name__=="__main__"):
+	app.run(debug=True)
