@@ -26,8 +26,10 @@ def view():
 	df=read_excel('tst.xlsx',0)
 	ind=df.index
 	date=df['date']
+	mandeh = df['mandeh']
+
 	num = random.randint(1,200)
-	return render_template('tt.html',number=num,date=date , ind=ind)
+	return render_template('tt.html',number=num,date=date , ind=ind , mandeh=mandeh)
 	
 
 
