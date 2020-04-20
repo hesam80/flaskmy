@@ -1,6 +1,6 @@
 from flask import Flask ,render_template, request, url_for, flash,session
 import requests , random
-
+from pandas import  read_excel
 """
 inja khode kave neGAR CODE DADE
 from kavenegar import *
@@ -17,12 +17,17 @@ def send_sms(receptor,message):
 	print("message",message)
 
 #send_sms('09368663893','HI DEAR')
+
+
 app = Flask(__name__)
 
 @app.route('/')
 def view():
+	df=read_excel('tst.xlsx',0)
+	ind=df.index
+	date=df['date']
 	num = random.randint(1,200)
-	return render_template('tt.html',number=num)
+	return render_template('tt.html',number=num,date=date , ind=ind)
 	
 
 
