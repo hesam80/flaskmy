@@ -4,7 +4,18 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	<title>{% block title %}{%endblock %}</title>
-	
+	<style type="text/css">
+		body{
+			color:#d05454;
+		}
+		p , li , nav{
+		color:#eee;
+	}
+	li>span , span {
+		color: #052108;
+	}
+
+	</style>
 </head>
 <body>
 	<h1>{{number+1}}</h1>
@@ -21,9 +32,9 @@
 	<nav>one</nav>
 <div>
 	<ul>
-		<li class="nav" href="index.php">{{number}}</li>
-		<li class="nav" href="index.php">p;slg</li>
-		<li class="nav" href="index.php"></li>
+		<li class="nav" href="index.php"><p>{{number}}</p></li>
+		<li class="nav" href="index.php">{{number*2}}</li>
+		<li class="nav" href="index.php"><span>{{number*3}}</span></li>
 		
 	</ul>
 </div>
