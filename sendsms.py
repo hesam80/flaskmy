@@ -21,17 +21,26 @@ def send_sms(receptor,message):
 
 app = Flask(__name__)
 
-@app.route('/')
+"""@app.route('/')
 def view():
-	df=read_excel('tst.xlsx',0)
+	df=read_excel('comptst.xlsx',0)
 	ind=df.index
 	date=df['date']
 	mandeh = df['mandeh']
 
 	num = random.randint(1,200)
 	return render_template('tt.html',number=num,date=date , ind=ind , mandeh=mandeh)
-	
-
+	"""
+@app.route('/')
+def view():
+	df=read_excel('comptst.xlsx',0)
+	ind=df.index
+	decprition=df['dec']
+	part=df['pn']
+	sernof=df['snf']
+	sernon=df['snn']
+	num=random.randint(1,300)
+	return render_template('tt.html',number=num, date=part,ind=ind , mandeh=decprition)
 
 # @app.route('/tst')
 # def view():

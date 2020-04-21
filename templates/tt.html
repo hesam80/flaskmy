@@ -9,6 +9,7 @@
 			color:#d05454;
 		}
 		p , li , nav{
+		text-align:initial;
 		color:#eee;
 	}
 	li>span , span {
@@ -22,19 +23,19 @@
 	<h1>{{number}}</h1>
 	<h1>{{number}}</h1>
 	{% for i in ind  %}
-	<h1>{{date[i]}}</h1>
-	<h1>{{mandeh[i]}}</h1>
+	<h1>partnumber is :{{date[i]}}</h1>
+	<h1>decprition is : {{mandeh[i]}}</h1>
 	{% endfor %}
 	
-	
+	<a href="#" class="button bg-green"><span>دانلود </span></a>
 	<nav>one</nav>
 	<nav>one</nav>
 	<nav>one</nav>
 <div>
 	<ul>
-		<li class="nav" href="index.php"><p>{{number}}</p></li>
+		<li class="nav" href="index.php">{{number}}</li>
 		<li class="nav" href="index.php">{{number*2}}</li>
-		<li class="nav" href="index.php"><span>{{number*3}}</span></li>
+		<li class="nav" href="index.php">{{number*3}}</li>
 		
 	</ul>
 </div>
