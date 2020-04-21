@@ -32,8 +32,10 @@
 	<h1>{{number}}</h1>
 	<h1>{{number}}</h1>
 	{% for i in ind  %}
-	<h1>partnumber is :{{date[i]}}</h1>
-	<h1>decprition is : {{mandeh[i]}}</h1>
+	<h1>partnumber is :{{part[i]}}</h1>
+	<h1>decprition is : {{decprition[i]}}</h1>
+	<h1>serial on is : {{seron[i]}}</h1>
+	<h1>serial off is : {{serof[i]}}</h1>
 	{% endfor %}
 	
 	<a class="button bg-green" href="{{url_for('view')}}" target="_blank" ><span>دانلود </span></a>
@@ -50,13 +52,17 @@
 	</ul>
 	<table border = "1">
   <tr>
+  	<th>decprition</th>
     <th>partnumber</th>
-    <th>decprition</th>
+    <th>SN OF</th>
+    <th>SN ON</th>
   </tr>
   <tr>
   	{% for i in ind  %}
-	<td>{{date[i]}}</td>
-	<td>{{mandeh[i]}}</td>
+	<td>{{decprition[i]}}</td>
+	<td>{{part[i]}}</td>
+	<td>{{seron[i]}}</td>
+	<td>{{serof[i]}}</td>
 	{% endfor %}
     
   </tr>
