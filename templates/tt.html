@@ -15,6 +15,13 @@
 	li>span , span {
 		color: #052108;
 	}
+	address {
+  display: block;
+  font-style: italic;
+  color: #052108;
+  text-align:initial;
+}
+
 
 	</style>
 </head>
@@ -27,7 +34,8 @@
 	<h1>decprition is : {{mandeh[i]}}</h1>
 	{% endfor %}
 	
-	<a href="#" class="button bg-green"><span>دانلود </span></a>
+	<a class="button bg-green" href="{{url_for('view')}}" target="_blank" ><span>دانلود </span></a>
+
 	<nav>one</nav>
 	<nav>one</nav>
 	<nav>one</nav>
@@ -46,6 +54,10 @@
 
 
 
-	
+<address>
+	Written by hesam hosseini <br>
+	My Site: mahantech.tk <br>
+	My Location: Iran, tehran <br>
+</address> 
 </body>
 </html>
