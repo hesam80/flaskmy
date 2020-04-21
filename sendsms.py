@@ -1,6 +1,6 @@
 from flask import Flask ,render_template, request, url_for, flash,session
-import requests
-
+import requests , random
+from pandas import  read_excel
 """
 inja khode kave neGAR CODE DADE
 from kavenegar import *
@@ -17,17 +17,34 @@ def send_sms(receptor,message):
 	print("message",message)
 
 #send_sms('09368663893','HI DEAR')
-# app = Flask(__name__)
 
-# @app.route('/')
-# def view():
-# 	return render_template(tt.html)
-	
 
+app = Flask(__name__)
+
+"""@app.route('/')
+def view():
+	df=read_excel('comptst.xlsx',0)
+	ind=df.index
+	date=df['date']
+	mandeh = df['mandeh']
+
+	num = random.randint(1,200)
+	return render_template('tt.html',number=num,date=date , ind=ind , mandeh=mandeh)
+	"""
+@app.route('/')
+def view():
+	df=read_excel('comptst.xlsx',0)
+	ind=df.index
+	decprition=df['dec']
+	part=df['pn']
+	sernof=df['snf']
+	sernon=df['snn']
+	num=random.randint(1,300)
+	return render_template('tt.html',number=num, date=part,ind=ind , mandeh=decprition)
 
 # @app.route('/tst')
 # def view():
 # 	return "hi there"
 
-# if(__name__=="__main__"):
-# 	app.run(debug=True)
+if(__name__=="__main__"):
+	app.run(debug=True)
