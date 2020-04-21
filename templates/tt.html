@@ -48,6 +48,19 @@
 		<li class="nav" href="index.php">{{number*3}}</li>
 		
 	</ul>
+	<table border = "1">
+  <tr>
+    <th>partnumber</th>
+    <th>decprition</th>
+  </tr>
+  <tr>
+  	{% for i in ind  %}
+	<td>{{date[i]}}</td>
+	<td>{{mandeh[i]}}</td>
+	{% endfor %}
+    
+  </tr>
+</table>
 </div>
 <div class="s"></div>
 <div class="s"></div>
