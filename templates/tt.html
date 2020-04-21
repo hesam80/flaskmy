@@ -12,11 +12,34 @@
 		text-align:initial;
 		color:#eee;
 	}
-	li>span , span, table, table>td , table>th {
+	li>span , span {
 		color: #052108;
 		text-align:initial;
 		font-style: italic;
+		width:100%;
+		border-collapse: collapse;
 	}
+	table{
+width:100%;
+border-spacing: 5px;
+}
+
+table,td{
+border:2px solid #607D8B;
+}
+
+td{
+padding:5px;
+text-align:center;
+color:#fff;
+}
+
+th{
+background-color:#2196F3;
+color:#fff;
+border:2px solid black;
+padding:5px;
+}
 	address {
   display: block;
   font-style: italic;
@@ -31,6 +54,30 @@
 	<h1>{{number+1}}</h1>
 	<h1>{{number}}</h1>
 	<h1>{{number}}</h1>
+		<table border = "1">
+		<caption>component tables</caption>
+  <tr>
+  	
+  	<td>decprition</td>
+    <td>partnumber</td>
+    <td>SN OF</td>
+    <td>SN ON</td>
+  
+  </tr>
+  
+  	{% for i in ind  %}
+  	<tr>
+	<td>{{decprition[i]}}</td>
+	<td>{{part[i]}}</td>
+	<td>{{seron[i]}}</td>
+	<td>{{serof[i]}}</td>
+	</tr>
+	{% endfor %}
+    <tr>
+    	<a class="button bg-purple" href="{{url_for('view')}}" ><span>Refresh</span></a>
+    </tr>
+  
+</table>
 	{% for i in ind  %}
 	<h1>partnumber is :{{part[i]}}</h1>
 	<h1>decprition is : {{decprition[i]}}</h1>
@@ -50,23 +97,7 @@
 		<li class="nav" href="index.php">{{number*3}}</li>
 		
 	</ul>
-	<table border = "1">
-  <tr>
-  	<th>decprition</th>
-    <th>partnumber</th>
-    <th>SN OF</th>
-    <th>SN ON</th>
-  </tr>
-  <tr>
-  	{% for i in ind  %}
-	<td>{{decprition[i]}}</td>
-	<td>{{part[i]}}</td>
-	<td>{{seron[i]}}</td>
-	<td>{{serof[i]}}</td>
-	{% endfor %}
-    
-  </tr>
-</table>
+
 </div>
 <div class="s"></div>
 <div class="s"></div>
