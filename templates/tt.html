@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	<title>{% block title %}{%endblock %}</title>
+	<script type="text/javascript">
+	 function autoRefresh(t){
+	 setTimeout('location.reload(true)', t);
+	 }
+	</script>
 	<style type="text/css">
 		body{
 			color:#d05454;
