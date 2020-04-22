@@ -37,10 +37,14 @@ def view():
 	ind=df.index
 	decprition=df['dec']
 	part=df['pn']
-	sernof=df['snf']
-	sernon=df['snn']
+	serof=df['snf']
+	seron=df['snn']
 	num=random.randint(1,300)
-	return render_template('tt.html',number=num, date=part,ind=ind , mandeh=decprition)
+	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof)
+
+
+	
+
 
 # @app.route('/tst')
 # def view():
