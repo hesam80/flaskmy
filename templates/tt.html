@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	<title>{% block title %}{%endblock %}</title>
+	<script type="text/javascript">
+	 function autoRefresh(t){
+	 setTimeout('location.reload(true)', t);
+	 }
+	</script>
 	<style type="text/css">
 		body{
 			color:#d05454;
@@ -50,9 +55,9 @@ padding:5px;
 
 	</style>
 </head>
-<body>
+<body  onclick="autoRefresh('15000');">
 	<h1>{{number+1}}</h1>
-	<h1>{{number}}</h1>
+	<h1>{{number*2}}</h1>
 	<h1>{{number}}</h1>
 		<table border = "1">
 		<caption>component tables</caption>

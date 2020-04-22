@@ -1,6 +1,7 @@
 from flask import Flask ,render_template, request, url_for, flash,session
 import requests , random
 from pandas import  read_excel
+
 """
 inja khode kave neGAR CODE DADE
 from kavenegar import *
@@ -33,6 +34,7 @@ def view():
 	"""
 @app.route('/')
 def view():
+
 	df=read_excel('comptst.xlsx',0)
 	ind=df.index
 	decprition=df['dec']
