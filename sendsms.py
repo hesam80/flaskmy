@@ -1,6 +1,8 @@
 from flask import Flask ,render_template, request, url_for, flash,session
 import requests , random
 from pandas import  read_excel
+from numpy import *
+import numpy as np
 """
 inja khode kave neGAR CODE DADE
 from kavenegar import *
@@ -40,7 +42,9 @@ def view():
 	serof=df['snf']
 	seron=df['snn']
 	num=random.randint(1,300)
-	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof)
+	
+	a = np.arange(12).reshape((3,4))
+	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof, a=a)
 
 # @app.route('/tst')
 # def view():
