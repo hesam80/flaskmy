@@ -6,7 +6,7 @@
 	<title>{% block title %}{%endblock %}</title>
 	<script type="text/javascript">
 	 function refresh(t){
-	 setTimeout('location.reload('true',t)')
+	 setTimeout(location.reload(t));
 	 }
 	</script>
 	<style type="text/css">
@@ -55,7 +55,7 @@ padding:5px;
 
 	</style>
 </head>
-<body  onload="refresh('15000');">
+<body  onclick="location.reload();">
 	<h1>{{number+1}}</h1>
 	<h1>{{number}}</h1>
 	<h1>{{number}}</h1>
