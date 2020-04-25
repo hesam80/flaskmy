@@ -15,15 +15,16 @@ y = numpy.array([[7, 8], [9, 10], [4, 5]])
 #  add()is used to add matrices
 
 print ("Addition of two matrices: " ,numpy.add(x,y))
-print ("Matrix transposition : ")
-print (x)
-print(x.T)
-for i in range(1,4):
-	for j in range(7,11):
-	 z=numpy.array([[i,j]])
+print("<br>")
 
-print("z= ",z)
+print ("Matrix transposition : ",x)
+
+print(x.T)
+print("<br>")
+
 a = np.arange(12).reshape((3,4))
 print ("a = ",a)
+print("<br>")
+print("<hr>")
 practice_metrice = np.array(range(12)).reshape(3,4)
 print("the practice_metrice is ",practice_metrice)
