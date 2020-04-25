@@ -4,14 +4,14 @@ import pandas as pd
 from pandas import ExcelWriter
 from pandas import ExcelFile
 from pandas import read_excel
-import numppy as np
+
 #Create instance of Flask App
 app = Flask(__name__)
  
 #Define Route and Contant of that page
 @app.route("/")
 def indexx():
-	a = np.arrange(1.12).reshape(3,4)
+	
 
     return render_template("indexx.html")
  
