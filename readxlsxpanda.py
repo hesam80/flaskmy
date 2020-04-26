@@ -1,23 +1,22 @@
 from pandas import  read_excel
+import pandas as pd
 from exceldoc import *
 import sqlite3
 import xlrd
 import os.path
 
 def readexcl():
-	df=read_excel('tst.xlsx',0)
-#print(df)
-	date=df['date']
+    df=pd.read_excel('comptst.xlsx',0)
+    ind=df.index
+    decprition=df['dec']
+    part=df['pn']
+    serof=df['snf']
+    seron=df['snn']
 
-	for i in df.index:
+    for i in df.index:
     #print("To iterate over the list we can use a loop:",df['mandeh'][i])
-		print(date[i])
-	df=read_excel('comptst.xlsx',0)
-	ind=df.index
-	decprition=df['dec']
-	part=df['pn']
-	serof=df['snf']
-	seron=df['snn']
+	    print(';', decprition[i])
+	
 
 def createtable():
     with sqlite3.connect('cmp.db3') as db:
@@ -121,5 +120,4 @@ def tst_fetchone():
 createtable()
 #insert_excel_todb()
 tst_fetchone()
-
-#test()
+#readexcl()
