@@ -32,7 +32,7 @@ def createtable():
             
     db.commit()
 
-def from_excel_todb():
+def insert_excel_todb():
     with sqlite3.connect('cmp.db3') as db, \
         ExcelDocument('comptst.xlsx') as src:
         insert_template = "INSERT INTO cmp " \
@@ -50,11 +50,13 @@ def from_excel_todb():
             else:
                 db.commit()
         
-        # Check if all data have been loaded
+def show_data():
+     # Check if all data have been loaded
     select_stmt = 'SELECT DISTINCT dec, pn FROM cmp;'
     for row in db.execute(select_stmt).fetchall():
             print(';'.join(row))
     db.close()
+
 
 def delete():
     db = sqlite3.connect('cmp.db3')
