@@ -1,4 +1,9 @@
 from pandas import  read_excel
+from exceldoc import *
+import sqlite3
+import xlrd
+import os.path
+
 def readexcl():
 	df=read_excel('tst.xlsx',0)
 #print(df)
@@ -16,6 +21,7 @@ def readexcl():
 
 def createtable():
     with sqlite3.connect('cmp.db3') as db:
+        db.row_factory = sqlite3.Row
         db.execute(
         "CREATE TABLE IF NOT EXISTS cmp(" \
             "id INTEGER PRIMARY KEY," \
@@ -26,4 +32,63 @@ def createtable():
             
     db.commit()
 
+def from_excel_todb():
+    with sqlite3.connect('cmp.db3') as db, \
+        ExcelDocument('comptst.xlsx') as src:
+        insert_template = "INSERT INTO cmp " \
+         "(dec, pn, snf, snn) " \
+         "VALUES (?, ?, ?, ?);"
+            
+        # Clear the database        
+        # Load data from each Excel sheet into the database
+    for sheet in src:
+            try:
+                db.executemany(insert_template, sheet.iter_rows())
+            except sqlite3.Error as e:
+                print(e)
+                db.rollback()
+            else:
+                db.commit()
+        
+        # Check if all data have been loaded
+    select_stmt = 'SELECT DISTINCT dec, pn FROM cmp;'
+    for row in db.execute(select_stmt).fetchall():
+            print(';'.join(row))
+    db.close()
+
+def delete():
+    db = sqlite3.connect('cmp.db3')
+    db.execute('DELETE FROM cmp;')
+
+def test():
+    db = sqlite3.connect('test.db')
+    db.row_factory = sqlite3.Row
+    db.execute('DROP TABLE IF EXISTS test')
+    db.execute('CREATE TABLE test(t1 text, i1 int)')
+
+    db.execute('INSERT INTO test (t1, i1) VALUES (?, ?)', ('one', 1))
+    db.execute('INSERT INTO test (t1, i1) VALUES (?, ?)', ('two', 2))
+    db.execute('INSERT INTO test (t1, i1) VALUES (?, ?)', ('three', 3))
+    db.execute('INSERT INTO test (t1, i1) VALUES (?, ?)', ('four', 4))
+    db.execute('INSERT INTO test (t1, i1) VALUES (?, ?)', ('five', 5))
+
+    db.commit()
+
+    cursor = db.execute('SELECT * FROM test ORDER BY i1 ASC')
+   
+    for row in cursor:
+        #print(row)
+        #print(dict(row))
+        #print(row['t1'])
+        #print(row['i1'])
+        print(row['t1'], row['i1'])
+        
+        #print(list(row))
+        #print(tuple(row))
+    db.close()
+
+
 createtable()
+from_excel_todb()
+
+#test()

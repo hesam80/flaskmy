@@ -230,4 +230,4 @@ def test_all():
     test_all_case_studies()
 
 
-test_all()
+test_case_study_1()
