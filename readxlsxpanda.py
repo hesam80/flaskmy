@@ -86,9 +86,38 @@ def test():
         #print(list(row))
         #print(tuple(row))
     db.close()
+def tst_fetchone():
+    with sqlite3.connect('cmp.db3') as db, \
+        ExcelDocument('comptst.xlsx') as src:
+        insert_template = "INSERT INTO cmp " \
+         "(dec, pn, snf, snn) " \
+         "VALUES (?, ?, ?, ?);"
+            
+        # Clear the database        
+        # Load data from each Excel sheet into the database
+    for sheet in src:
+            try:
+                db.executemany(insert_template, sheet.iter_rows())
+            except sqlite3.Error as e:
+                print(e)
+                db.rollback()
+            else:
+                db.commit()
+        
+
+    query = 'SELECT dec, pn, snf FROM cmp ' \
+        "WHERE snn='RS066';"
+    curs = db.execute(query)
+    row = curs.fetchone()
+    print(','.join(row))
+    #while row is not None:
+        #print(','.join(row))
+        #row = curs.fetchone()
+    
 
 
 createtable()
-from_excel_todb()
+#insert_excel_todb()
+tst_fetchone()
 
 #test()
