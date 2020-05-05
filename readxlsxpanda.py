@@ -25,7 +25,19 @@ def np_tst2():
 	today = np.datetime64('today', 'D')
 	#today+=1
 	print("today is: ",today)
+	
+def np_tst_gous():
+
+#resource tamame inha dar
+
+# http://www.projelecom.ir/2018/08/21/%D8%B4%D8%B1%D9%88%D8%B9-%D8%A8%D9%87-%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%DA%A9%D8%AA%D8%A7%D8%A8%D8%AE%D8%A7%D9%86%D9%87-numpy-%D8%AF%D8%B1-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86/ 
+	X, Y = np.meshgrid(np.linspace(-1,1,10), np.linspace(-1,1,10))
+	D = np.sqrt(X*X+Y*Y)
+	sigma, mu = 1.0, 0.0
+	G = np.exp(-( (D-mu)**2 / ( 2.0 * sigma**2 ) ) )
+	print(G)
 
 
 #pdnp()
-np_tst2()
+#np_tst2()
+np_tst_gous()
