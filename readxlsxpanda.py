@@ -1,6 +1,14 @@
 from pandas import  read_excel
-df=read_excel('tst.xlsx',0)
-print(df)
-for index in df.itetrows():
-	print(index)
-	
+import numpy as np
+def pdnp():
+	df=read_excel('tst.xlsx',0)
+	tst=df.head()
+	sum_bedehkar=df['bedehkar'].sum()
+	print(tst)
+	print("sum_bedehkar is" ,sum_bedehkar)
+	min_bedehkar=np.min(df['bedehkar'])
+	print("min_bedehkar is ",min_bedehkar)
+	max_mandeh=np.max(df['mandeh'])
+	print("max_mandeh is ",max_mandeh)
+
+pdnp()
