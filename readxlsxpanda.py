@@ -12,10 +12,20 @@ def pdnp():
 	print("max_mandeh is ",max_mandeh)
 
 def np_tst():
-	Z = np.tile( np.array([[0,1],[1,0]]), (4,4))
+    # array shatranji 4 row 4 column
+	z = np.tile( np.array([[0,1],[1,0]]), (4,4))
 	print("z is:",z)
 
+def np_tst2():
+    # normalize karadane array
+	Z = np.random.random((5,5))
+	Zmax, Zmin = Z.max(), Z.min()
+	Z = (Z - Zmin)/(Zmax - Zmin)
+	print("Z and Zmax, Zmin: ", Z, Zmax , Zmin)
+	today = np.datetime64('today', 'D')
+	#today+=1
+	print("today is: ",today)
 
 
 #pdnp()
-np_tst()
+np_tst2()
