@@ -4,97 +4,9 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 	<title>{% block title %}{%endblock %}</title>
-	<script type="text/javascript">
-	 function autoRefresh(t){
-	 setTimeout('location.reload(true)', t);
-	 }
-	</script>
-	<style type="text/css">
-		body{
-			color:#d05454;
-		}
-		p , li , nav{
-		text-align:initial;
-		color:#eee;
-	}
-	li>span , span {
-		color: #052108;
-		text-align:initial;
-		font-style: italic;
-		width:100%;
-		border-collapse: collapse;
-	}
-	table{
-width:100%;
-border-spacing: 5px;
-}
 
-table,td{
-border:2px solid #607D8B;
-}
-
-td{
-padding:5px;
-text-align:center;
-color:#fff;
-}
-
-th{
-background-color:#2196F3;
-color:#fff;
-border:2px solid black;
-padding:5px;
-}
-	address {
-  display: block;
-  font-style: italic;
-  color: #052108;
-  text-align:initial;
-}
-
-
-	</style>
 </head>
-<body  onclick="autoRefresh('15000');">
-	<h1>{{number+1}}</h1>
-	<h1>{{number*2}}</h1>
-	<h1>{{number}}</h1>
-		<table border = "1">
-		<caption>component tables</caption>
-  <tr>
-  	
-  	<td>decprition</td>
-    <td>partnumber</td>
-    <td>SN OF</td>
-    <td>SN ON</td>
-  
-  </tr>
-  
-  	{% for i in ind  %}
-  	<tr>
-	<td>{{decprition[i]}}</td>
-	<td>{{part[i]}}</td>
-	<td>{{seron[i]}}</td>
-	<td>{{serof[i]}}</td>
-	</tr>
-	{% endfor %}
-    <tr>
-    	<a class="button bg-purple" href="{{url_for('view')}}" ><span>Refresh</span></a>
-    </tr>
-  
-</table>
-	{% for i in ind  %}
-	<h1>partnumber is :{{part[i]}}</h1>
-	<h1>decprition is : {{decprition[i]}}</h1>
-	<h1>serial on is : {{seron[i]}}</h1>
-	<h1>serial off is : {{serof[i]}}</h1>
-	{% endfor %}
-	
-	<a class="button bg-green" href="{{url_for('view')}}" target="_blank" ><span>دانلود </span></a>
 
-	<nav>one</nav>
-	<nav>one</nav>
-	<nav>one</nav>
 <div>
 	<ul>
 		<li class="nav" href="index.php">{{number}}</li>

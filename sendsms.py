@@ -1,6 +1,4 @@
 from flask import Flask ,render_template, request, url_for, flash,session
-import requests , random
-from pandas import  read_excel
 
 """
 inja khode kave neGAR CODE DADE
@@ -20,6 +18,7 @@ def send_sms(receptor,message):
 #send_sms('09368663893','HI DEAR')
 
 
+
 app = Flask(__name__)
 
 """@app.route('/')
@@ -34,7 +33,6 @@ def view():
 	"""
 @app.route('/')
 def view():
-
 	df=read_excel('comptst.xlsx',0)
 	ind=df.index
 	decprition=df['dec']
@@ -42,11 +40,9 @@ def view():
 	serof=df['snf']
 	seron=df['snn']
 	num=random.randint(1,300)
-	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof)
-
-
 	
-
+	a = np.arange(12).reshape((3,4))
+	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof, a=a)
 
 # @app.route('/tst')
 # def view():
