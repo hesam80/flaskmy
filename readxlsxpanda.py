@@ -11,4 +11,11 @@ def pdnp():
 	max_mandeh=np.max(df['mandeh'])
 	print("max_mandeh is ",max_mandeh)
 
-pdnp()
+def np_tst():
+	Z = np.tile( np.array([[0,1],[1,0]]), (4,4))
+	print("z is:",z)
+
+
+
+#pdnp()
+np_tst()
