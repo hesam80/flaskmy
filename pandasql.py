@@ -1,7 +1,23 @@
 from pandas import  read_excel
+import pandas as pd
+from exceldoc import *
+import sqlite3
+import xlrd
+import os.path
+
+def readexcl():
+    df=pd.read_excel('comptst.xlsx',0)
+    ind=df.index
+    decprition=df['dec']
+    part=df['pn']
+    serof=df['snf']
+    seron=df['snn']
+
+    for i in df.index:
+    #print("To iterate over the list we can use a loop:",df['mandeh'][i])
+	    print(';', decprition[i])
 	
 
-#resource tamame inha dar
 def createtable():
     with sqlite3.connect('cmp.db3') as db:
         db.row_factory = sqlite3.Row
@@ -90,12 +106,6 @@ def tst_fetchone():
                 db.commit()
         
 
-# http://www.projelecom.ir/2018/08/21/%D8%B4%D8%B1%D9%88%D8%B9-%D8%A8%D9%87-%D8%A7%D8%B3%D8%AA%D9%81%D8%A7%D8%AF%D9%87-%D8%A7%D8%B2-%DA%A9%D8%AA%D8%A7%D8%A8%D8%AE%D8%A7%D9%86%D9%87-numpy-%D8%AF%D8%B1-%D9%BE%D8%A7%DB%8C%D8%AA%D9%88%D9%86/ 
-	X, Y = np.meshgrid(np.linspace(-1,1,10), np.linspace(-1,1,10))
-	D = np.sqrt(X*X+Y*Y)
-	sigma, mu = 1.0, 0.0
-	G = np.exp(-( (D-mu)**2 / ( 2.0 * sigma**2 ) ) )
-	print(G)
     query = 'SELECT dec, pn, snf FROM cmp ' \
         "WHERE snn='RS066';"
     curs = db.execute(query)
@@ -111,13 +121,3 @@ createtable()
 #insert_excel_todb()
 tst_fetchone()
 #readexcl()
-=======
-import numpy as np
-df=read_excel('tst.xlsx',0)
-tst=df.head()
-sum_bedehkar=df['bedehkar'].sum()
-print(tst)
-print("sum_bedehkar is" ,sum_bedehkar)
-min_bedehkar=np.min(df['bedehkar'])
-print("min_bedehkar is ",min_bedehkar)
->>>>>>> origin/edare
