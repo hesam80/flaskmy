@@ -37,7 +37,15 @@ def np_tst_gous():
 	G = np.exp(-( (D-mu)**2 / ( 2.0 * sigma**2 ) ) )
 	print(G)
 
+def zero():
+	Z = np.zeros(10)
+	Z[4] = 1
+	print(Z)
+	d=np.eye(3)
+	print(d)
+
 
 #pdnp()
 #np_tst2()
-np_tst_gous()
+#np_tst_gous()
+zero()
