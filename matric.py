@@ -31,5 +31,9 @@ def zoj(n):
 
 
 
+<<<<<<< HEAD
 zoj(13.15)
+=======
+zoj(10.14)
+>>>>>>> home
 #tahlil()
