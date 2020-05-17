@@ -1,5 +1,6 @@
 import stdio
 import stdarray
+import numpy as np
 def readb():
 	count = stdio.readInt()
 	print(count)
@@ -19,7 +20,10 @@ def readcells():
 		for column in range(columns):
 			a[row][column]=stdio.readInt()
 		#	print(a[row][column])
-	print("this matric is: ", a)
+#	print("this matric is: ", a)
 	return a
 
-readcells()
+v=readcells()
+z=np.array(v)
+#print("the metrice is : ",z)
+print("shape", z.shape)
