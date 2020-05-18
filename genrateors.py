@@ -3,4 +3,4 @@ def genarets(i):
 		yield i
 		i-=1
 for i in  genarets(5):
-	print(i)
+	print("?",i)
