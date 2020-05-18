@@ -23,7 +23,20 @@ def readcells():
 #	print("this matric is: ", a)
 	return a
 
+
+
+def num_practice():
+	z=np.zeros((5,5),dtype=int)
+	z[1::2,::2]=1
+	z[::2,1::2]=1
+	return z
+
+x=num_practice()
 v=readcells()
 z=np.array(v)
-#print("the metrice is : ",z)
-print("shape", z.shape)
+w=np.add(z,x)
+print(z)
+print(z.T)
+print(x)
+print(z.shape)
+print(w)

@@ -8,6 +8,10 @@ def flow(is_open):
 def percolates(is_open):
 	n=len(is_open)
 	is_full = flow(is_open)
+	for j in range(n):
+		if is_full[n-1][j]:
+			return True
+	return False
 
 def checktravosh():
 	is_open=stdarray.readBool2D()
