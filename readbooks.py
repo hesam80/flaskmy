@@ -1,0 +1,27 @@
+import requests
+import bs4
+import urlib
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+def showbook(name):
+	try:
+		name=urlib.quote_plus(name)
+		baseURL='https://www.goodreads.com'
+		goodreads=requests.get
+(baseURL+"/search?utf8=%E2%9C%93&search_type=books&search%5Bfield=outhor&q="+name)
+		soap= bs4.BeautifulSoup(goodreads,content)
+		frstbookURL=soap.find("a","bookTitle")['href']
+		print('"'+baseURL+"'")
+	except:
+		pass
+page= requests.get("https://en.m.wikipedia.org/wiki/List_of_authors_by_name:_M")
+soap=bs4.BeautifulSoup(page,content)
+names=soap.findALL("a")
+
+for name in names:
+	if name.string is None:
+		continue
+	if name.string[0]=='J' and len(name.string)>2:
+		try:
