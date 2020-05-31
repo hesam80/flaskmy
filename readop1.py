@@ -5,5 +5,6 @@ def op_one():
 	tst=df.head()
 	dp=df.groupby('Chapter').size()
 	print(dp)
+	print(df.dtypes)
 
 op_one()
