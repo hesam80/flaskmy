@@ -4,7 +4,7 @@ import numpy as np
 
 class Colors:
     """ IN ORDER TO USE COLORS OR SOME STYLING OPTIONS WE SHOULD USE THESE CONTANTS EASILY! """
-    HEADER = '\033[95m'
+    HEADER = '\034[95m'
     OKBLUE = '\033[94m'
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
