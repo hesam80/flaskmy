@@ -2,14 +2,18 @@ from pandas import  read_excel
 import numpy as np
 def op_one():
 	df=read_excel('op1.xlsx',0)
-	date_sort= df['Chapter'].std()
+	return df['Chapter'].std()
 	#tst1=df1.head()
-	print("sort date",date_sort)
-	tst=df.head()
-	dp=df.groupby('Chapter').size()
+	#print("sort date",date_sort)
+	#tst=df.head()
+	#dp=df.groupby('Chapter').size()
 	#print(dp)
 	#print(df.dtypes)
 	#print(df.count())
+def pandas_practce(op_one):
+	date=op_one()
+	print("sort",date)
+
 def task_to_do():
 	tasks=[
 	'sleep early in night',
@@ -33,3 +37,4 @@ def task_to_do():
 
 #task_to_do()
 op_one()
+pandas_practce(op_one)
