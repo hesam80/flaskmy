@@ -6,15 +6,16 @@ def modify_metatag():
     REMOVE PREVIOUS METADATA AND EMBED NEW ONE
     """
     QARI_NAME = input("Enter qari name: ")
+    QARI=[]
     for i in range(len(QARI_NAME)):
         try:
             i = str(i)
             i += QARI_NAME
             # Renaming file name
             # INSTEAD OF SPACE IN QARI NAME WE SHOULD HAVE DASH.
-            QARI = QARI_NAME.replace(i, "-")
+            #QARI.append(i)
             path = QARI + "-" + i + ".mp3"
-            i+= QARI
+            #i+= QARI
             #os.rename(i + ".mp3", path)
             # Remove previous metadata
             print(i)
