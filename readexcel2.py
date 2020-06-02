@@ -13,5 +13,5 @@ print("<br><B>hello python</B>")
 df = pd.read_excel('tst.xlsx', sheetname='Sheet1')
 
 print("Column headings:")
-print(df.columns)
+print(df.head())
 
