@@ -2,18 +2,24 @@ from pandas import  read_excel
 import numpy as np
 
 def arzyabi():
-	arz=[
+	tasks=[
+	'sleep early in night',
+	'works regurallity',
+	'make a plan for days',
 	'exercize',
-	'business',
-	'study',
-	'python',
+	'review my weblog',
+	'study python',
 	]
-	answers=input(f"do you done"+ arz + "(y or n)")
-	count=0
-	for answer in answers:
-		if answer=='y':
-			count+=1
-	print(count)
+	answers=[]
+	rank=0
+	percentage=100/len(tasks)
+	for task in tasks:
+		answer=input("Did you"+task + "?"+"(y or n)")
+		answers.append(answer)
+		if answer=="y":
+			rank+=percentage
+	
+	print("you've done "+ str(int(rank))+ " % of your tasks")
 
 
 def op_one():
