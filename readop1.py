@@ -13,14 +13,15 @@ def op_one():
 	print(df.dtypes)
 
 def op1_analize(file):
-	df=read_excel('file',0)
-	return df['Chapter'].std()
+	df1=read_excel(file,0)
+	#return df1['Chapter'].std()
 	tst1=df1.head()
-	print("sort date",date_sort)
+	print(tst1)
+	#print("sort date",date_sort)
 	#tst=df.head()
 	#dp=df.groupby('Chapter').size()
 	#print(dp)
-	#print(df.dtypes)
+	#print(df1.dtypes)
 	#print(df.count())
 def pandas_practce():
 	date=op_one()
@@ -28,5 +29,5 @@ def pandas_practce():
 
 
 #op_one()
-#op1_analize(file)
-pandas_practce()
+op1_analize('op1.xlsx')
+#pandas_practce()
