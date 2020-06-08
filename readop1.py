@@ -25,7 +25,8 @@ def display_menu():
     1) RUN pandas_practce
     2) RUN op_one
     3) RUN task to do
-    4) RUN Beautifulsoap
+    4) RUN tahlil_defect
+    5) RUN tahlil_defect_op1
     PLEASE SPECIFIE WITH A NUMBER: 
     """)
     if selected=="1":
@@ -38,6 +39,8 @@ def display_menu():
     	task_to_do()
     elif selected=="4":
     	tahlil_defect()
+    elif selected=="5":
+    	tahlil_defect_op1()
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -52,6 +55,7 @@ def op_one():
 def pandas_practce(op_one):
 	date=op_one()
 	print("sort",date)
+
 
 def task_to_do():
 	tasks=[
@@ -73,13 +77,17 @@ def task_to_do():
 	
 	print("you've done "+ str(int(rank))+ " % of your tasks")
 
-def tahlil_defect():
+def tahlil_defect_op1():
 	df=read_excel('op1.xlsx',0)
-	action=df['Action'][23]
-	print(action)
+	for i in range(27,30):
+		action=df['Action'][i]
+		print(i,action)
 	print(len(action))
 	tahlil_action=action[-70:]
 	print(tahlil_action)
+
+def tahlil_defect():
+	
 	
 	tag="""DURING ENG RUN UP FOUND ENG#4 IDLE PARAMETER OUT OF LIMIT SO HMU CHANGED IAW AMM 73-20-01 P401.
 
@@ -87,12 +95,13 @@ P/N OFF:2-193-330-13
 S/N OFF:99AGU840
 P/N ON:2-193-330-10
 S/N ON:4AGU223."""
-	multi = """DPFI FOUND P.B SYS PRESS DECAY TIME IS SHORT SO T/S DONE IAW AMM 32-41-00 P127 FOUND MOTORIZED P.B VLV #2 NOT WORKING SO REPLACED WITH S/B PART IAW AMM 32-41-81 & CHK FOUND OK.
-
-P/N OFF:HTE9635-3
-S/N OFF:FR077BR
-P/N ON:HTE9635-3
-S/N ON:788VB189."""
+	multi = """DPFI FND TYRE #3 WAS FLAT AND NO GROOVE SO REPLACED BY NEW ONE IAW AMM 32-42-11 PB 401
+P/N Name:NOSE WHEEL ASSY
+P/N OFF:AHA1489
+S/N OFF:ND116
+P/N ON:AHA1480
+S/N ON:NW097
+."""
 	text = (
     "%d little pigs come out, "
     "or I'll %s, and I'll %s, "
@@ -100,8 +109,12 @@ S/N ON:788VB189."""
     % (3, 'huff', 'puff', 'house'))
 	#length=len(tag)
 	#print(tag+str(length))
-	filter_tag=tag[-70:]
-	#print(filter_tag)
+	filter_tag=multi[-70:]
+	filter_tag.find('P/N OFF:')
+	filter_1st= filter_tag.replace('P/N OFF:', '')
+	filter_2nd= filter_tag.replace('S/N OFF:', '')
+	#print(filter_tag.replace('P/N ON:', ''))
+	print(filter_1st+filter_2nd)
 	#print(text)
 
  	#<class 'bs4.element.Tag'>
