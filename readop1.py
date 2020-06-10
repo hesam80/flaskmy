@@ -89,12 +89,13 @@ def tahlil_defect_op1():
 def tahlil_defect():
 	
 	
-	tag="""DURING ENG RUN UP FOUND ENG#4 IDLE PARAMETER OUT OF LIMIT SO HMU CHANGED IAW AMM 73-20-01 P401.
-
-P/N OFF:2-193-330-13
-S/N OFF:99AGU840
-P/N ON:2-193-330-10
-S/N ON:4AGU223."""
+	tag="""FOR T/S IDG ENG# 4 SWAPPED WITH ENG # 1 & ENG RUN PERFORMED FND ENG # 4 STARTING TIME WITHIN NORMAL IAW AMM 24-11-11 ENG RUN IAW AMM 71-00-00 P/B 501 REV109 DATE 15-01-13
+P/N Name: IDG/CSD
+P/N OFF: 728471XC
+S/N OFF: 0453
+P/N ON: 728471B
+S/N ON: 0693
+."""
 	multi = """DPFI FND TYRE #3 WAS FLAT AND NO GROOVE SO REPLACED BY NEW ONE IAW AMM 32-42-11 PB 401
 P/N Name:NOSE WHEEL ASSY
 P/N OFF:AHA1489
@@ -102,22 +103,26 @@ S/N OFF:ND116
 P/N ON:AHA1480
 S/N ON:NW097
 ."""
-	text = (
-    "%d little pigs come out, "
-    "or I'll %s, and I'll %s, "
-    "and I'll blow your %s down."
-    % (3, 'huff', 'puff', 'house'))
+
 	#length=len(tag)
 	#print(tag+str(length))
-	filter_tag=multi[-70:]
-	filter_tag.find('P/N OFF:')
-	filter_1st= filter_tag.replace('P/N OFF:', '')
-	filter_2nd= filter_tag.replace('S/N OFF:', '')
-	#print(filter_tag.replace('P/N ON:', ''))
-	print(filter_1st+filter_2nd)
-	#print(text)
+	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
+	#filter_tag.find('P/N OFF:')
+	filter_1st= filter_tag.replace('P/N OFF: ', '')
+	filter_2nd= filter_1st.replace('S/N OFF: ', '')
+	filter_3nd= filter_2nd.replace('P/N ON: ', '')
+	filter_4nd= filter_3nd.replace('S/N ON: ', '')
+	
 
- 	#<class 'bs4.element.Tag'>
+	#print(filter_tag.replace('P/N ON:', ''))
+	print(filter_4nd)
+	print(len(tag))
+	pnnumber=(-1)*(int(tag.find('P/N')-8))
+	pnnumber+=8
+	print(pnnumber)
+	print(len(('P/N OFF:')))
+	
+ 	
 
 
 #task_to_do()
