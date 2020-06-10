@@ -80,7 +80,7 @@ def task_to_do():
 def tahlil_defect_op1():
 	df=read_excel('op1.xlsx',0)
 	#for i in range(27,30):
-	action=df['Action'][3]
+	action=df['Action'][6]
 	print(action)
 	filter_tag=action[(int(action.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
@@ -88,10 +88,11 @@ def tahlil_defect_op1():
 	filter_2nd= filter_1st.replace('S/N OFF:', '')
 	filter_3nd= filter_2nd.replace('P/N ON:', '')
 	filter_4nd= filter_3nd.replace('S/N ON:', '')
-	print(filter_4nd[int(filter_4nd.find('P/N'))+8:].strip())
-	print(len(action))
-	tahlil_action=action[-70:-90]
-	print(tahlil_action)
+	expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+	x =expose.split()
+	
+	print(x,len(expose))
+	
 
 def tahlil_defect():
 	
