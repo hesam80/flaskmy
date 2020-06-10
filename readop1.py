@@ -38,9 +38,9 @@ def display_menu():
     	pandas_practce(op_one)
     	task_to_do()
     elif selected=="4":
-    	tahlil_defect()
-    elif selected=="5":
     	tahlil_defect_op1()
+    elif selected=="5":
+    	tahlil_defect()
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -79,49 +79,60 @@ def task_to_do():
 
 def tahlil_defect_op1():
 	df=read_excel('op1.xlsx',0)
-	for i in range(27,30):
-		action=df['Action'][i]
-		print(i,action)
+	#for i in range(27,30):
+	action=df['Action'][3]
+	print(action)
+	filter_tag=action[(int(action.find('P/N OFF:'))):]
+	#filter_tag.find('P/N OFF:')
+	filter_1st= filter_tag.replace('P/N OFF:', '')
+	filter_2nd= filter_1st.replace('S/N OFF:', '')
+	filter_3nd= filter_2nd.replace('P/N ON:', '')
+	filter_4nd= filter_3nd.replace('S/N ON:', '')
+	print(filter_4nd[int(filter_4nd.find('P/N'))+8:].strip())
 	print(len(action))
-	tahlil_action=action[-70:]
+	tahlil_action=action[-70:-90]
 	print(tahlil_action)
 
 def tahlil_defect():
 	
 	
-	tag="""FOR T/S IDG ENG# 4 SWAPPED WITH ENG # 1 & ENG RUN PERFORMED FND ENG # 4 STARTING TIME WITHIN NORMAL IAW AMM 24-11-11 ENG RUN IAW AMM 71-00-00 P/B 501 REV109 DATE 15-01-13
-P/N Name: IDG/CSD
-P/N OFF: 728471XC
-S/N OFF: 0453
-P/N ON: 728471B
-S/N ON: 0693
+	tag="""AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.
+P/N Name: SENSOR
+P/N OFF:4372C000
+S/N OFF:244185-3
+P/N ON:4372C000
+S/N ON:1195
+
 ."""
-	multi = """DPFI FND TYRE #3 WAS FLAT AND NO GROOVE SO REPLACED BY NEW ONE IAW AMM 32-42-11 PB 401
-P/N Name:NOSE WHEEL ASSY
-P/N OFF:AHA1489
-S/N OFF:ND116
-P/N ON:AHA1480
-S/N ON:NW097
+	multi = """REFER TO ADDR #205522 APU STARTER REPLACED WITH SB PART IAW AMM 49-40-35 PB 201 FOUND SAT
+P/N Name:
+P/N OFF:519892-6-2
+S/N OFF:11-4638
+P/N ON:519892-6-2
+S/N ON:11-4638
 ."""
 
 	#length=len(tag)
 	#print(tag+str(length))
 	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
-	filter_1st= filter_tag.replace('P/N OFF: ', '')
-	filter_2nd= filter_1st.replace('S/N OFF: ', '')
-	filter_3nd= filter_2nd.replace('P/N ON: ', '')
-	filter_4nd= filter_3nd.replace('S/N ON: ', '')
+	filter_1st= filter_tag.replace('P/N OFF', '')
+	filter_2nd= filter_1st.replace('S/N OFF', '')
+	filter_3nd= filter_2nd.replace('P/N ON', '')
+	filter_4nd= filter_3nd.replace('S/N ON', '')
 	
 
 	#print(filter_tag.replace('P/N ON:', ''))
-	print(filter_4nd)
-	print(len(tag))
-	pnnumber=(-1)*(int(tag.find('P/N')-8))
-	pnnumber+=8
-	print(pnnumber)
+	print("Replace string is:",filter_tag)
+	print("toole string",len(tag))
+	pnnumber=(-1)*(int(filter_4nd.find('P/N')-8))
+	#pnnumber+=8
+	print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
 	print(len(('P/N OFF:')))
-	
+	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+
+def tahlil():
+	print(tahlil_defect())
  	
 
 
