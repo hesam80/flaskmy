@@ -5,22 +5,22 @@ def modify_metatag():
     """
     REMOVE PREVIOUS METADATA AND EMBED NEW ONE
     """
-    QARI_NAME = input("Enter qari name: ")
+    USER_NAME = input("Enter USER name: ")
     
-    for i in range(len(QARI_NAME)):
+    for i in range(len(USER_NAME)):
         try:
             i = str(i)
-            i += QARI_NAME
-            QARI+=QARI_NAME
+            i += USER_NAME
+            USER+=USER_NAME
             # Renaming file name
-            # INSTEAD OF SPACE IN QARI NAME WE SHOULD HAVE DASH.
-            #QARI.append(i)
-            path = QARI + "-" + i + ".mp3"
-            #i+= QARI
+            # INSTEAD OF SPACE IN USER NAME WE SHOULD HAVE DASH.
+            #USER.append(i)
+            path = USER + "-" + i + ".mp3"
+            #i+= USER
             #os.rename(i + ".mp3", path)
             # Remove previous metadata
             print(i)
-            print(QARI)
+            print(USER)
             print(path)
         except:
            print("nokm")
