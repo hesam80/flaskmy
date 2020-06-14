@@ -1,7 +1,9 @@
+import pandas as pd
 from pandas import  read_excel
+from pandas import 
 from configg import Configg
-df=read_excel('tst.xlsx',0)
-print(df)
-d=Configg("hello")
-print(d.s)
-	
+
+df = pd.read_excel('tst.xlsx',0)
+df.head()	
+e=df['bedehkar'].min()
+print(e)
