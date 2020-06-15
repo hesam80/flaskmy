@@ -79,45 +79,68 @@ def task_to_do():
 
 def tahlil_defect_op1():
 	df=read_excel('op1.xlsx',0)
-	for i in range(27,30):
-		action=df['Action'][i]
-		print(i,action)
-	print(len(action))
-	tahlil_action=action[-70:]
-	print(tahlil_action)
+	#for i in range(27,30):
+	action=df['Action'][6]
+	print(action)
+	filter_tag=action[(int(action.find('P/N OFF:'))):]
+	#filter_tag.find('P/N OFF:')
+	filter_1st= filter_tag.replace('P/N OFF:', '')
+	filter_2nd= filter_1st.replace('S/N OFF:', '')
+	filter_3nd= filter_2nd.replace('P/N ON:', '')
+	filter_4nd= filter_3nd.replace('S/N ON:', '')
+	expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+	x =expose.split()
+	
+	print(x,len(expose))
+	
 
 def tahlil_defect():
 	
 	
-	tag="""DURING ENG RUN UP FOUND ENG#4 IDLE PARAMETER OUT OF LIMIT SO HMU CHANGED IAW AMM 73-20-01 P401.
+	tag="""AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.
+P/N Name: SENSOR
+P/N OFF:4372C000
+S/N OFF:244185-3
+P/N ON:4372C000
+S/N ON:1195
 
-P/N OFF:2-193-330-13
-S/N OFF:99AGU840
-P/N ON:2-193-330-10
-S/N ON:4AGU223."""
-	multi = """DPFI FND TYRE #3 WAS FLAT AND NO GROOVE SO REPLACED BY NEW ONE IAW AMM 32-42-11 PB 401
-P/N Name:NOSE WHEEL ASSY
-P/N OFF:AHA1489
-S/N OFF:ND116
-P/N ON:AHA1480
-S/N ON:NW097
 ."""
-	text = (
-    "%d little pigs come out, "
-    "or I'll %s, and I'll %s, "
-    "and I'll blow your %s down."
-    % (3, 'huff', 'puff', 'house'))
+	multi = """REFER TO ADDR #205522 APU STARTER REPLACED WITH SB PART IAW AMM 49-40-35 PB 201 FOUND SAT
+P/N Name:
+P/N OFF:519892-6-2
+S/N OFF:11-4638
+P/N ON:519892-6-2
+S/N ON:11-4638
+."""
+
 	#length=len(tag)
 	#print(tag+str(length))
-	filter_tag=multi[-70:]
-	filter_tag.find('P/N OFF:')
-	filter_1st= filter_tag.replace('P/N OFF:', '')
-	filter_2nd= filter_tag.replace('S/N OFF:', '')
-	#print(filter_tag.replace('P/N ON:', ''))
-	print(filter_1st+filter_2nd)
-	#print(text)
+	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
+	#filter_tag.find('P/N OFF:')
+	filter_1st= filter_tag.replace('P/N OFF', '')
+	filter_2nd= filter_1st.replace('S/N OFF', '')
+	filter_3nd= filter_2nd.replace('P/N ON', '')
+	filter_4nd= filter_3nd.replace('S/N ON', '')
+	
 
- 	#<class 'bs4.element.Tag'>
+	#print(filter_tag.replace('P/N ON:', ''))
+	print("Replace string is:",filter_tag)
+	print("toole string",len(tag))
+	pnnumber=(-1)*(int(filter_4nd.find('P/N')-8))
+	#pnnumber+=8
+	print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
+	print(len(('P/N OFF:')))
+	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+
+def tahlil():
+	#soap=BeautifulSoup('https://pythonspot.com/read-excel-with-pandas/','htmlparser')
+	page = requests.get("http://forecast.weather.gov/MapClick.php?lat=37.7772&lon=-122.4168")
+	soup = BeautifulSoup(page.content, 'html.parser')
+	seven_day = soup.find(id="seven-day-forecast")
+	forecast_items = seven_day.find_all(class_="tombstone-container")
+	tonight = forecast_items[0]
+	print(tonight.prettify())
+	print('home', 'user', 'documents', sep='/')
 
 
 #task_to_do()
