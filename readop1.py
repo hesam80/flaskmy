@@ -1,46 +1,48 @@
-import os, re, shutil
+import os, re, shutil , requests
 from pandas import  read_excel
 import numpy as np
 from bs4 import BeautifulSoup
 
 class Colors:
-    """ IN ORDER TO USE COLORS OR SOME STYLING OPTIONS WE SHOULD USE THESE CONTANTS EASILY! """
-    HEADER = '\034[95m'
-    OKBLUE = '\033[94m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
+	""" IN ORDER TO USE COLORS OR SOME STYLING OPTIONS WE SHOULD USE THESE CONTANTS EASILY! """
+	HEADER = '\034[95m'
+	OKBLUE = '\033[94m'
+	OKGREEN = '\033[92m'
+	WARNING = '\033[93m'
+	FAIL = '\033[91m'
+	ENDC = '\033[0m'
+	BOLD = '\033[1m'
+	UNDERLINE = '\033[4m'
 
 def display_menu():
-    """
-        DISPLAY A MENU OF WHAT USER CAN DO
-    """
-    print(f"{Colors.HEADER}{Colors.BOLD}************************************************{Colors.ENDC}")
-    print(f"{Colors.HEADER}{Colors.BOLD}*****  Hello - Hessam Hosseini  ******{Colors.ENDC}")
-    print(f"{Colors.HEADER}{Colors.BOLD}************************************************{Colors.ENDC}")
-    selected = input(f"""{Colors.WARNING}WHICH ONE? (1-2) {Colors.ENDC}
-    1) RUN pandas_practce
-    2) RUN op_one
-    3) RUN task to do
-    4) RUN tahlil_defect
-    5) RUN tahlil_defect_op1
-    PLEASE SPECIFIE WITH A NUMBER: 
-    """)
-    if selected=="1":
-    	pandas_practce(op_one)
-    elif selected=="2":
-    	op_one()
-    	#print(op_one())
-    elif selected=="3":
-    	pandas_practce(op_one)
-    	task_to_do()
-    elif selected=="4":
-    	tahlil_defect_op1()
-    elif selected=="5":
-    	tahlil_defect()
+	"""
+		DISPLAY A MENU OF WHAT USER CAN DO
+	"""
+	print(f"{Colors.HEADER}{Colors.BOLD}************************************************{Colors.ENDC}")
+	print(f"{Colors.HEADER}{Colors.BOLD}*****  Hello - Hessam Hosseini  ******{Colors.ENDC}")
+	print(f"{Colors.HEADER}{Colors.BOLD}************************************************{Colors.ENDC}")
+	selected = input(f"""{Colors.WARNING}WHICH ONE? (1-2) {Colors.ENDC}
+	1) RUN pandas_practce
+	2) RUN op_one
+	3) RUN task to do
+	4) RUN tahlil_defect
+	5) RUN tahlil_defect_op1
+	PLEASE SPECIFIE WITH A NUMBER: 
+	""")
+	if selected=="1":
+		pandas_practce(op_one)
+	elif selected=="2":
+		op_one()
+		#print(op_one())
+	elif selected=="3":
+		pandas_practce(op_one)
+		task_to_do()
+	elif selected=="4":
+		tahlil_defect_op1()
+	elif selected=="5":
+		tahlil_defect()
+	elif selected=="6":
+		tahlil()
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -133,8 +135,14 @@ S/N ON:11-4638
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
 def tahlil():
-	print(tahlil_defect())
- 	
+	#soap=BeautifulSoup('https://pythonspot.com/read-excel-with-pandas/','htmlparser')
+	page = requests.get("http://forecast.weather.gov/MapClick.php?lat=37.7772&lon=-122.4168")
+	soup = BeautifulSoup(page.content, 'html.parser')
+	seven_day = soup.find(id="seven-day-forecast")
+	forecast_items = seven_day.find_all(class_="tombstone-container")
+	tonight = forecast_items[0]
+	print(tonight.prettify())
+	print('home', 'user', 'documents', sep='/')
 
 
 #task_to_do()
