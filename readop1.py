@@ -27,6 +27,7 @@ def display_menu():
 	3) RUN task to do
 	4) RUN tahlil_defect
 	5) RUN tahlil_defect_op1
+	6) RUN scrabbling
 	PLEASE SPECIFIE WITH A NUMBER: 
 	""")
 	if selected=="1":
@@ -42,7 +43,9 @@ def display_menu():
 	elif selected=="5":
 		tahlil_defect()
 	elif selected=="6":
-		tahlil()
+		scraping()
+	elif selected=="7":
+		myscraping()
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -134,7 +137,7 @@ S/N ON:11-4638
 	print(len(('P/N OFF:')))
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
-def tahlil():
+def scraping():
 	#soap=BeautifulSoup('https://pythonspot.com/read-excel-with-pandas/','htmlparser')
 	page = requests.get("http://forecast.weather.gov/MapClick.php?lat=37.7772&lon=-122.4168")
 	soup = BeautifulSoup(page.content, 'html.parser')
@@ -142,8 +145,17 @@ def tahlil():
 	forecast_items = seven_day.find_all(class_="tombstone-container")
 	tonight = forecast_items[0]
 	print(tonight.prettify())
+	print("{}{}{}{}{}{}")
 	print('home', 'user', 'documents', sep='/')
-
+	#page2=requests.get('https://www.bbc.com/persian/magazine-52996956')
+	#soup2=BeautifulSoup(page2.content,'htmlparser')
+def myscraping():
+	page=requests.get("https://www.bbc.com/persian/world-features-53087339")
+	soup=BeautifulSoup(page.content,'htmlparser')
+	one_a_tag = soup.findAll("a")
+	link = one_a_tag['href']
+	print(link.prettify())
+	
 
 #task_to_do()
 #op_one()
