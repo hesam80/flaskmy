@@ -27,6 +27,7 @@ def display_menu():
 	3) RUN task to do
 	4) RUN tahlil_defect
 	5) RUN tahlil_defect_op1
+	6) RUN scrabbling
 	PLEASE SPECIFIE WITH A NUMBER: 
 	""")
 	if selected=="1":
