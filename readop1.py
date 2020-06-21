@@ -143,20 +143,22 @@ def scraping():
 	soup = BeautifulSoup(page.content, 'html.parser')
 	seven_day = soup.find(id="seven-day-forecast")
 	forecast_items = seven_day.find_all(class_="tombstone-container")
-	tonight = forecast_items[0]
+	#tonight = forecast_items[0]
 	print("<html><h3>daily weather</h3>")
-	print(tonight.prettify())
+	for i in range(int(2)):
+		tonight=forecast_items[i]
+		print(tonight.prettify())
+		i+=1
+		
+	#print(tonight.prettify())
 	print("{}{}{}{}{}{}")
 	print('home', 'user', 'documents', sep='/')
 	#page2=requests.get('https://www.bbc.com/persian/magazine-52996956')
 	#soup2=BeautifulSoup(page2.content,'htmlparser')
 def myscraping():
-	page=requests.get("https://www.bbc.com/persian/world-features-53087339")
-	soup=BeautifulSoup(page.content,'htmlparser')
-	one_a_tag = soup.findAll("a")
-	link = one_a_tag['href']
-	print(link.prettify())
-	
+	page=requests.get("https://www.bbc.com/persian/magazine-51502606")
+	soup=BeautifulSoup(page.content,'html.parser')
+	link = soup.findAll("a")
 
 #task_to_do()
 #op_one()
