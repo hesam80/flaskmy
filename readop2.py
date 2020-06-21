@@ -43,7 +43,9 @@ def display_menu():
 	elif selected=="5":
 		tahlil_defect()
 	elif selected=="6":
-		tahlil()
+		scraping()
+	elif selected=="7":
+		myscraping()
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
