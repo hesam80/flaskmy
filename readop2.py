@@ -137,16 +137,28 @@ S/N ON:11-4638
 	print(len(('P/N OFF:')))
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
-def tahlil():
+def scraping():
 	#soap=BeautifulSoup('https://pythonspot.com/read-excel-with-pandas/','htmlparser')
 	page = requests.get("http://forecast.weather.gov/MapClick.php?lat=37.7772&lon=-122.4168")
 	soup = BeautifulSoup(page.content, 'html.parser')
 	seven_day = soup.find(id="seven-day-forecast")
 	forecast_items = seven_day.find_all(class_="tombstone-container")
-	tonight = forecast_items[0]
-	print(tonight.prettify())
+	#tonight = forecast_items[0]
+	print("<html><h3>daily weather</h3>")
+	for i in range(int(2)):
+		tonight=forecast_items[i]
+		print(tonight.prettify())
+		i+=1
+		
+	#print(tonight.prettify())
+	print("{}{}{}{}{}{}")
 	print('home', 'user', 'documents', sep='/')
-
+	#page2=requests.get('https://www.bbc.com/persian/magazine-52996956')
+	#soup2=BeautifulSoup(page2.content,'htmlparser')
+def myscraping():
+	page=requests.get("https://www.bbc.com/persian/magazine-51502606")
+	soup=BeautifulSoup(page.content,'html.parser')
+	link = soup.findAll("a")
 
 #task_to_do()
 #op_one()
