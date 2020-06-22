@@ -145,7 +145,7 @@ def scraping():
 	forecast_items = seven_day.find_all(class_="tombstone-container")
 	#tonight = forecast_items[0]
 	print("<html><h3>daily weather</h3>")
-	for i in range(int(2)):
+	for i in range(int(3)):
 		tonight=forecast_items[i]
 		print(tonight.prettify())
 		i+=1
@@ -159,6 +159,9 @@ def myscraping():
 	page=requests.get("https://www.bbc.com/persian/magazine-51502606")
 	soup=BeautifulSoup(page.content,'html.parser')
 	link = soup.findAll("a")
+	print("Content-Type: text/html\n charset:utf-8\n")
+	print(link[0].prettify())
+	print(link[1].prettify())
 
 #task_to_do()
 #op_one()
