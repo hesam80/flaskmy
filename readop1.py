@@ -28,8 +28,11 @@ def display_menu():
 	4) RUN tahlil_defect
 	5) RUN tahlil_defect_op1
 	6) RUN scrabbling
+	7) RUN myscrabing
+	8) Run APIs
 	PLEASE SPECIFIE WITH A NUMBER: 
 	""")
+	print("select Number is:",selected)
 	if selected=="1":
 		pandas_practce(op_one)
 	elif selected=="2":
@@ -46,6 +49,8 @@ def display_menu():
 		scraping()
 	elif selected=="7":
 		myscraping()
+	elif selected=="8":
+		myapi()
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -161,7 +166,12 @@ def myscraping():
 	link = soup.findAll("a")
 	print("Content-Type: text/html\n charset:utf-8\n")
 	print(link[0].prettify())
-	print(link[1].prettify())
+	print(link[0].prettify())
+
+def myapi():
+	url="http://search.twitter.com/search.json?q=jQuery&result_type=recent&rpp=3"
+	asd=requests.get(url)
+	print(asd)
 
 #task_to_do()
 #op_one()
