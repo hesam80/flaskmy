@@ -51,6 +51,10 @@ def display_menu():
 		myscraping()
 	elif selected=="8":
 		myapi()
+	elif selected=="9":
+		prices(prices)
+		if price < prices :
+			send_sms('09368663893',hi)
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -168,10 +172,18 @@ def myscraping():
 	print(link[0].prettify())
 	print(link[0].prettify())
 
+
+def send_sms(receptor,message,prices):
+	url = f'https://api.kavenegar.com/v1/%s/sms/send.json' % API_KEY
+	data={"message":message , "receptor":receptor}
+	response=requests.post(url,data)
+	print("message",message)
+
 def myapi():
-	url="http://search.twitter.com/search.json?q=jQuery&result_type=recent&rpp=3"
-	asd=requests.get(url)
-	print(asd)
+	price=6500
+	response2=requests.get('https//:api.coinbase.com/v2/prices/buy?currency=USD',
+ proxies={'https' : 'socks5://127.0.0.1:1080'})
+	prices = float(response2.json()['date']['amount'])
 
 #task_to_do()
 #op_one()

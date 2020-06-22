@@ -12,17 +12,24 @@ response = api.sms_send( params)
 
 #API-KEY='6E2F4F744E66394E474F4270484A56567A4A4F313662336B34726F4135766E646A47626C534A6C356B74593D'
 def send_sms(receptor,message):
-	url = f'https://api.kavenegar.com/v1/6E2F4F744E66394E474F4270484A56567A4A4F313662336B34726F4135766E646A47626C534A6C356B74593D/sms/send.json'
+	url = f'https://api.kavenegar.com/v1/%s/sms/send.json' % API_KEY
 	data={"message":message , "receptor":receptor}
 	response=requests.post(url,data)
 	print("message",message)
 
-#send_sms('09368663893','HI DEAR')
+price=6500
+response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD',
+ proxies={'https' : 'socks5://127.0.0.1:1080'})
+prices = float(response2.json()['date']['amount'])
+print(prices)
 
+#display()
+#send_sms('09368663893','HI DEAR')
+"""
 
 app = Flask(__name__)
 
-"""@app.route('/')
+@app.route('/')
 def view():
 	df=read_excel('comptst.xlsx',0)
 	ind=df.index
@@ -31,7 +38,7 @@ def view():
 
 	num = random.randint(1,200)
 	return render_template('tt.html',number=num,date=date , ind=ind , mandeh=mandeh)
-	"""
+	
 @app.route('/')
 def view():
 
@@ -54,3 +61,4 @@ def view():
 
 if(__name__=="__main__"):
 	app.run(debug=True)
+	"""
