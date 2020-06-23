@@ -19,7 +19,7 @@ def send_sms(receptor,message):
 
 price=6500
 response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD',
- proxies={'https' : 'socks5://127.0.0.1:1080'})
+   proxies={'https' : 'socks5://127.0.0.1:1080'})
 prices = float(response2.json()['date']['amount'])
 print(prices)
 
