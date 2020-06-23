@@ -21,7 +21,7 @@ def display_menu():
 	print(f"{Colors.HEADER}{Colors.BOLD}************************************************{Colors.ENDC}")
 	print(f"{Colors.HEADER}{Colors.BOLD}*****  Hello - Hessam Hosseini  ******{Colors.ENDC}")
 	print(f"{Colors.HEADER}{Colors.BOLD}************************************************{Colors.ENDC}")
-	selected = input(f"""{Colors.WARNING}WHICH ONE? (1-2) {Colors.ENDC}
+	selected = input(f"""{Colors.WARNING}WHICH ONE? (1-8) {Colors.ENDC}
 	1) RUN pandas_practce
 	2) RUN op_one
 	3) RUN task to do
@@ -181,8 +181,8 @@ def send_sms(receptor,message,prices):
 
 def myapi():
 	price=6500
-	response2=requests.get('https//:api.coinbase.com/v2/prices/buy?currency=USD',
- proxies={'https' : 'socks5://127.0.0.1:1080'})
+	response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD',
+ proxies={'https':'socks5://127.0.0.1:1080'})
 	prices = float(response2.json()['date']['amount'])
 
 #task_to_do()
