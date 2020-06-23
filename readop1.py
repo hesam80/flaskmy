@@ -1,4 +1,4 @@
-import os, re, shutil , requests
+import os, re, shutil , requests , sendsms
 from pandas import  read_excel
 import numpy as np
 from bs4 import BeautifulSoup
@@ -52,9 +52,7 @@ def display_menu():
 	elif selected=="8":
 		myapi()
 	elif selected=="9":
-		prices(prices)
-		if price < prices :
-			send_sms('09368663893',hi)
+		send_sms('09368663893',myapi())
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -173,17 +171,18 @@ def myscraping():
 	print(link[0].prettify())
 
 
-def send_sms(receptor,message,prices):
-	url = f'https://api.kavenegar.com/v1/%s/sms/send.json' % API_KEY
+def send_sms(receptor,message):
+	url = f'https://api.kavenegar.com/v1/%s/sms/send.json' % sendsms.API_KEY
 	data={"message":message , "receptor":receptor}
 	response=requests.post(url,data)
-	print("message",message)
+	
 
 def myapi():
 	price=6500
-	response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD',
- proxies={'https':'socks5://127.0.0.1:1080'})
-	prices = float(response2.json()['date']['amount'])
+	response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD')
+	prices = float(response2.json()['data']['amount'])
+	btc_price=f"The price of BTC For Now is: %f $" % prices
+	return btc_price
 
 #task_to_do()
 #op_one()

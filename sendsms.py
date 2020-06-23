@@ -10,19 +10,12 @@ params = { 'sender' : '1000596446', 'receptor': '09368663893', 'message' :'.وب
 response = api.sms_send( params)
 """
 
-#API-KEY='6E2F4F744E66394E474F4270484A56567A4A4F313662336B34726F4135766E646A47626C534A6C356B74593D'
+API_KEY='6E2F4F744E66394E474F4270484A56567A4A4F313662336B34726F4135766E646A47626C534A6C356B74593D'
 def send_sms(receptor,message):
 	url = f'https://api.kavenegar.com/v1/%s/sms/send.json' % API_KEY
 	data={"message":message , "receptor":receptor}
 	response=requests.post(url,data)
 	print("message",message)
-
-price=6500
-response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD',
-   proxies={'https' : 'socks5://127.0.0.1:1080'})
-prices = float(response2.json()['date']['amount'])
-print(prices)
-
 #display()
 #send_sms('09368663893','HI DEAR')
 """
