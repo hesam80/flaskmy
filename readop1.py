@@ -30,6 +30,7 @@ def display_menu():
 	6) RUN scrabbling
 	7) RUN myscrabing
 	8) Run APIs
+	9) Run sendsms BTC
 	PLEASE SPECIFIE WITH A NUMBER: 
 	""")
 	print("select Number is:",selected)
@@ -52,7 +53,8 @@ def display_menu():
 	elif selected=="8":
 		myapi()
 	elif selected=="9":
-		send_sms('09368663893',myapi())
+		mobile=input(f"""MOBILE NUM FOR BTC SMS""")
+		send_sms('mobile',myapi())
 
 def op_one():
 	df=read_excel('op1.xlsx',0)
@@ -178,11 +180,11 @@ def send_sms(receptor,message):
 	
 
 def myapi():
-	price=6500
 	response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD')
 	prices = float(response2.json()['data']['amount'])
 	btc_price=f"The price of BTC For Now is: %f $" % prices
-	return btc_price
+	print(btc_price)
+	return prices
 
 #task_to_do()
 #op_one()
