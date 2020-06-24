@@ -2,6 +2,7 @@ from flask import Flask ,render_template, request, url_for, flash,session
 import requests , random
 from pandas import  read_excel
 
+
 """
 inja khode kave neGAR CODE DADE
 from kavenegar import *
@@ -16,8 +17,20 @@ def send_sms(receptor,message):
 	data={"message":message , "receptor":receptor}
 	response=requests.post(url,data)
 	print("message",message)
+def myapi():
+	response2=requests.get('https://api.coinbase.com/v2/prices/buy?currency=USD')
+	prices = float(response2.json()['data']['amount'])
+	btc_price=f"The price of BTC For Now is: %f $" % prices
+	return btc_price
+
+app = Flask(__name__)
+
+@app.route('/')
+def view():
+	return myapi()
+
 #display()
-#send_sms('09368663893','HI DEAR')
+send_sms('09368663893',myapi())
 """
 
 app = Flask(__name__)
@@ -51,7 +64,7 @@ def view():
 # @app.route('/tst')
 # def view():
 # 	return "hi there"
-
+"""
 if(__name__=="__main__"):
 	app.run(debug=True)
-	"""
+	

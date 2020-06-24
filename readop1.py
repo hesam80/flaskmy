@@ -185,7 +185,6 @@ def myapi():
 	btc_price=f"The price of BTC For Now is: %f $" % prices
 	print(btc_price)
 	return prices
-
 #task_to_do()
 #op_one()
 #pandas_practce(op_one)
