@@ -31,12 +31,12 @@ def view():
 
 #display()
 send_sms('09368663893',myapi())
-"""
 
-app = Flask(__name__)
 
-@app.route('/')
-def view():
+
+
+@app.route('/resful')
+def resful():
 	df=read_excel('comptst.xlsx',0)
 	ind=df.index
 	date=df['date']
@@ -45,8 +45,8 @@ def view():
 	num = random.randint(1,200)
 	return render_template('tt.html',number=num,date=date , ind=ind , mandeh=mandeh)
 	
-@app.route('/')
-def view():
+@app.route('/success')
+def success():
 
 	df=read_excel('comptst.xlsx',0)
 	ind=df.index
@@ -55,7 +55,8 @@ def view():
 	serof=df['snf']
 	seron=df['snn']
 	num=random.randint(1,300)
-	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof)
+	api=myapi()
+	return render_template('tt.html',number=num, part=part, ind=ind , decprition=decprition , seron=seron, serof=serof, api=api)
 
 
 	
@@ -64,7 +65,7 @@ def view():
 # @app.route('/tst')
 # def view():
 # 	return "hi there"
-"""
+
 if(__name__=="__main__"):
 	app.run(debug=True)
 	
