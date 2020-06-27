@@ -23,6 +23,8 @@ def myapi():
 	btc_price=f"The price of BTC For Now is: %f $" % prices
 	return btc_price
 
+
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -30,7 +32,7 @@ def view():
 	return myapi()
 
 #display()
-send_sms('09368663893',myapi())
+#send_sms('09368663893',myapi())
 
 
 
