@@ -22,7 +22,7 @@ def display_menu():
 	6) RUN scrabbling
 	7) RUN myscrabing
 	8) Run APIs
-	9) Run sendsms BTC
+	9) Run sendsms BTC pass
 	PLEASE SPECIFIE WITH A NUMBER: 
 	""")
 	print("select Number is:",selected)
