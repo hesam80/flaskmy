@@ -3,7 +3,7 @@ import pandas as pd
 from pandas import  read_excel
 import numpy as np
 from bs4 import BeautifulSoup
-
+import openpyxl
 
 
 def display_menu():
@@ -27,12 +27,12 @@ def display_menu():
 	""")
 	print("select Number is:",selected)
 	if selected=="1":
-		pandas_practce(op_one)
+		pandas_practce()
 	elif selected=="2":
 		op_one()
 		#print(op_one())
 	elif selected=="3":
-		pandas_practce(op_one)
+		pandas_practce()
 		task_to_do()
 	elif selected=="4":
 		tahlil_defect_op1()
@@ -56,11 +56,20 @@ def op_one():
 	print(dp)
 	#print(df.dtypes)
 	#print(df.count())
-def pandas_practce(op_one):
-	date=op_one()
-	print("sort",date)
+def pandas_practce():
+	date=tahlil_defect_op1()
+	print("sort",date[0])
+	#path = 'op1.xlsx'
+	df = pd.DataFrame([[date[0], date[1], date[2]]],
+              columns=['sn off','pn off','sn on'])
+	print(df)
 
+	
+	#df.to_excel('H:\op1.xlsx',sheet_name='Sheet1')
 
+	# with pd.ExcelWriter('H:\op1.xlsx') as writer:
+	#  	writer.book = openpyxl.load_workbook('H:\op1.xlsx')
+	#  	df.to_excel(writer, sheet_name='Sheet2')
 
 
 def tahlil_defect_op1():
@@ -76,8 +85,9 @@ def tahlil_defect_op1():
 	filter_4nd= filter_3nd.replace('S/N ON:', '')
 	expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 	x =expose.split()
-	
+	return x
 	print(x,len(expose))
+	
 	
 
 def tahlil_defect():
