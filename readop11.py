@@ -86,13 +86,12 @@ def insert_to_excel():
 	df1=pd.DataFrame(date)
 	print(df1)
 	df=pd.DataFrame([date[0], date[1], date[2]]) 
-	book=openpyxl.load_workbook('tst2.xlsx')
-	writer=pd.ExcelWriter('tst2.xlsx', engine='openpyxl')
+	book=openpyxl.load_workbook('op1.xlsx')
+	writer=pd.ExcelWriter('op1.xlsx', engine='openpyxl')
 	writer.book=book
 	writer.sheets={ws.title:ws for ws in book.worksheets}
 	print("maxrow is: ",writer.sheets['Sheet1'].max_row)
-	df.to_excel(writer, sheet_name='Sheet1', startrow=writer.sheets['Sheet1'].max_row,
-	startcol=0,index=False)
+	df.to_excel(writer, sheet_name='Sheet1', index=False)
 	writer.save()
 
 
@@ -125,17 +124,17 @@ P/N ON:4372C000
 S/N ON:1195
 
 ."""
-	multi = """REFER TO ADDR #205522 APU STARTER REPLACED WITH SB PART IAW AMM 49-40-35 PB 201 FOUND SAT
-P/N Name:
-P/N OFF:519892-6-2
-S/N OFF:11-4638
-P/N ON:519892-6-2
-S/N ON:11-4638
+	multi = """WO#BAE-MON-0009857 CONCERNING LEAD INSTALLATION DONE & TESTED IAW AMM 74-00-00 SO ADDR IRM 74 CLOSED.
+
+P/N OFF:2-303-767-02
+S/N OFF:3897
+P/N ON:2-303-767-02
+S/N ON:367
 ."""
 
 	#length=len(tag)
 	#print(tag+str(length))
-	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
+	filter_tag=MULTI[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
 	filter_1st= filter_tag.replace('P/N OFF', '')
 	filter_2nd= filter_1st.replace('S/N OFF', '')
