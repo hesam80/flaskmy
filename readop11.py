@@ -92,6 +92,7 @@ def insert_to_excel():
 	writer.sheets={ws.title:ws for ws in book.worksheets}
 	print("maxrow is: ",writer.sheets['Sheet1'].max_row)
 	df.to_excel(writer, sheet_name='Sheet1', index=False)
+	append_df_to_excel('op1.xlsx', order, index=False, encoding='utf-8')
 	writer.save()
 
 
@@ -196,17 +197,17 @@ P/N ON:4372C000
 S/N ON:1195
 
 ."""
-	multi = """WO#BAE-MON-0009857 CONCERNING LEAD INSTALLATION DONE & TESTED IAW AMM 74-00-00 SO ADDR IRM 74 CLOSED.
+	multi = """DUE TO AC PUMP FAIL LIGHT COMES ON FROM AUTO TO OFF POSITION RELATED RCCB REPLACED & TESTED FOUND OK.
 
-P/N OFF:2-303-767-02
-S/N OFF:3897
-P/N ON:2-303-767-02
-S/N ON:367
+P/N OFF:SM601BA40A14
+S/N OFF:4605
+P/N ON:SM601BA40A13
+S/N ON:00336
 ."""
 
 	#length=len(tag)
 	#print(tag+str(length))
-	filter_tag=MULTI[(-1)*(int(tag.find('P/N OFF:'))):]
+	filter_tag=multi[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
 	filter_1st= filter_tag.replace('P/N OFF', '')
 	filter_2nd= filter_1st.replace('S/N OFF', '')
