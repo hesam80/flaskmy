@@ -29,7 +29,7 @@ def display_menu():
 	if selected=="1":
 		pandas_practce()
 	elif selected=="2":
-		op_one()
+		insert_to_excel()
 		#print(op_one())
 	elif selected=="3":
 		pandas_practce()
