@@ -60,16 +60,39 @@ def pandas_practce():
 	date=tahlil_defect_op1()
 	print("sort",date[0])
 	#path = 'op1.xlsx'
-	df = pd.DataFrame([[date[0], date[1], date[2]]],
-              columns=['sn off','pn off','sn on'])
-	print(df)
-
+	#df = pd.DataFrame([[date[0], date[1], date[2]]],
+    #          columns=['sn off','pn off','sn on'])
 	
+
+	df=pd.DataFrame([[date[0], date[1], date[2]]],
+              columns=['sn off','pn off','sn on'])
 	#df.to_excel('H:\op1.xlsx',sheet_name='Sheet1')
 
 	# with pd.ExcelWriter('H:\op1.xlsx') as writer:
 	#  	writer.book = openpyxl.load_workbook('H:\op1.xlsx')
 	#  	df.to_excel(writer, sheet_name='Sheet2')
+	# 
+	#ws_dict = pd.read_excel('comptst.xlsx',Sheetname='Sheet1')
+	#print(ws_dict['pn'])
+
+
+	with pd.ExcelWriter('tst2.xlsx',engine='xlsxwriter') as writer:
+		writer.book = openpyxl.load_workbook('tst2.xlsx')
+		df.to_excel(writer)
+
+
+def insert_to_excel():
+	date=tahlil_defect_op1()
+	df1=pd.DataFrame(date)
+	print(df1)
+	df=pd.DataFrame([date[0], date[1], date[2]]) 
+	book=openpyxl.load_workbook('op1.xlsx')
+	writer=pd.ExcelWriter('op1.xlsx', engine='openpyxl')
+	writer.book=book
+	writer.sheets={ws.title:ws for ws in book.worksheets}
+	print("maxrow is: ",writer.sheets['Sheet1'].max_row)
+	df.to_excel(writer, sheet_name='Sheet1', index=False)
+	writer.save()
 
 
 def tahlil_defect_op1():
