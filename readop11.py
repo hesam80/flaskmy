@@ -64,8 +64,8 @@ def pandas_practce():
     #          columns=['sn off','pn off','sn on'])
 	
 
-	df=pd.DataFrame([[date[0], date[1], date[2]]],
-              columns=['sn off','pn off','sn on'])
+	#df=pd.DataFrame([[date[0], date[1], date[2]]],
+            #  columns=['sn off','pn off','sn on'])
 	#df.to_excel('H:\op1.xlsx',sheet_name='Sheet1')
 
 	# with pd.ExcelWriter('H:\op1.xlsx') as writer:
@@ -86,14 +86,14 @@ def insert_to_excel():
 	df1=pd.DataFrame(date)
 	print(df1)
 	df=pd.DataFrame([date[0], date[1], date[2]]) 
-	book=openpyxl.load_workbook('op1.xlsx')
-	writer=pd.ExcelWriter('op1.xlsx', engine='openpyxl')
-	writer.book=book
-	writer.sheets={ws.title:ws for ws in book.worksheets}
-	print("maxrow is: ",writer.sheets['Sheet1'].max_row)
-	df.to_excel(writer, sheet_name='Sheet1', index=False)
-	append_df_to_excel('op1.xlsx', order, index=False, encoding='utf-8')
-	writer.save()
+	# book=openpyxl.load_workbook('op1.xlsx')
+	# writer=pd.ExcelWriter('op1.xlsx', engine='openpyxl')
+	# writer.book=book
+	# writer.sheets={ws.title:ws for ws in book.worksheets}
+	# print("maxrow is: ",writer.sheets['Sheet1'].max_row)
+	#df.to_excel(writer, sheet_name='Sheet1', index=False)
+	append_df_to_excel('op1.xlsx', df,sheet_name='Sheet1', index=False, encoding='utf-8')
+	
 
 
 def tahlil_defect_op1():
