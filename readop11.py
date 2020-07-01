@@ -84,33 +84,43 @@ def pandas_practce():
 def insert_to_excel():
 	date=tahlil_defect_op1()
 	df1=pd.DataFrame(date)
-	print(df1)
-	df=pd.DataFrame([date[0], date[1], date[2]]) 
+	#print(df1)
+	df=pd.DataFrame([date[0]])
+	print(df[0])
 	# book=openpyxl.load_workbook('op1.xlsx')
 	# writer=pd.ExcelWriter('op1.xlsx', engine='openpyxl')
 	# writer.book=book
 	# writer.sheets={ws.title:ws for ws in book.worksheets}
 	# print("maxrow is: ",writer.sheets['Sheet1'].max_row)
 	#df.to_excel(writer, sheet_name='Sheet1', index=False)
-	append_df_to_excel('op1.xlsx', df,sheet_name='Sheet1', index=False, encoding='utf-8')
+	#append_df_to_excel('op1.xlsx', df,sheet_name='Sheet1', index=False, encoding='utf-8')
 	
 
 
 def tahlil_defect_op1():
 	df=read_excel('op1.xlsx',0)
-	#for i in range(27,30):
-	action=df['Action'][6]
-	print(action)
-	filter_tag=action[(int(action.find('P/N OFF:'))):]
-	#filter_tag.find('P/N OFF:')
-	filter_1st= filter_tag.replace('P/N OFF:', '')
-	filter_2nd= filter_1st.replace('S/N OFF:', '')
-	filter_3nd= filter_2nd.replace('P/N ON:', '')
-	filter_4nd= filter_3nd.replace('S/N ON:', '')
-	expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
-	x =expose.split()
-	return x
-	print(x,len(expose))
+	for i in range(6,13):
+		action=df['Action'][i]
+		print(action)
+		print(action.find('P/N OFF:'))
+		if action.find('P/N OFF:') != '-1':
+			filter_tag=action[(int(action.find('P/N OFF:'))):]
+			#filter_tag.find('P/N OFF:')
+			filter_1st= filter_tag.replace('P/N OFF:', '')
+			filter_2nd= filter_1st.replace('S/N OFF:', '')
+			filter_3nd= filter_2nd.replace('P/N ON:', '')
+			filter_4nd= filter_3nd.replace('S/N ON:', '')
+			expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+			x =expose.split()
+			i+=1
+			x=pd.DataFrame(x)
+			print(x)
+			return x
+		elif action.find('P/N OFF:') == '-1':
+			#print("no part is changed")
+			#print(x,len(expose))
+			pass
+	
 
 def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=None,
                        truncate_sheet=False, 
@@ -221,7 +231,6 @@ S/N ON:19956."""
 	filter_2nd= filter_1st.replace('S/N OFF', '')
 	filter_3nd= filter_2nd.replace('P/N ON', '')
 	filter_4nd= filter_3nd.replace('S/N ON', '')
-	print("2nd",filter_3nd)
 
 	#print(filter_tag.replace('P/N ON:', ''))
 	print("Replace string is:",filter_tag)
