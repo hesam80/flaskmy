@@ -190,38 +190,46 @@ def tahlil_defect():
 	
 	
 	tag="""AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.
-P/N Name: SENSOR
+P/N Name:
 P/N OFF:4372C000
 S/N OFF:244185-3
 P/N ON:4372C000
 S/N ON:1195
 
 ."""
-	multi = """DUE TO AC PUMP FAIL LIGHT COMES ON FROM AUTO TO OFF POSITION RELATED RCCB REPLACED & TESTED FOUND OK.
-
-P/N OFF:SM601BA40A14
-S/N OFF:4605
-P/N ON:SM601BA40A13
-S/N ON:00336
+	multi = """PACK VLV #2 REPLACED WITH S/P IAW 21-10-11 PB 401 
+P/N Name:
+P/N OFF:3502B000-004
+S/N OFF:1074
+P/N ON:3502B000-003
+S/N ON:16755-3
 ."""
+	tease="""P/N Name:
+P/N OFF:aha1489
+S/N OFF:2712005
+P/N ON:AHA1489
+S/N ON:19956."""
+
 
 	#length=len(tag)
 	#print(tag+str(length))
-	filter_tag=multi[(-1)*(int(tag.find('P/N OFF:'))):]
+	print(len(tease))
+	print("tease:",tease)
+	filter_tag=tease[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
 	filter_1st= filter_tag.replace('P/N OFF', '')
 	filter_2nd= filter_1st.replace('S/N OFF', '')
 	filter_3nd= filter_2nd.replace('P/N ON', '')
 	filter_4nd= filter_3nd.replace('S/N ON', '')
-	
+	print("2nd",filter_3nd)
 
 	#print(filter_tag.replace('P/N ON:', ''))
 	print("Replace string is:",filter_tag)
-	print("toole string",len(tag))
+	print("toole string",len(multi))
 	pnnumber=(-1)*(int(filter_4nd.find('P/N')-8))
 	#pnnumber+=8
 	print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
-	print(len(('P/N OFF:')))
+	print(len((filter_tag)))
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
 
