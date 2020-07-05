@@ -1,8 +1,9 @@
-import os, re, shutil , requests , sendsms
+import os, re, shutil , requests , sendsms , time
 import pandas as pd
 from pandas import  read_excel
 import numpy as np
 from bs4 import BeautifulSoup
+from selenium import webdriver
 import openpyxl
 
 
@@ -39,7 +40,7 @@ def display_menu():
 	elif selected=="5":
 		tahlil_defect()
 	elif selected=="6":
-		pass
+		whatsup()
 	elif selected=="7":
 		pass
 	elif selected=="8":
@@ -241,6 +242,13 @@ S/N ON:19956."""
 	print(len((filter_tag)))
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
+def whatsup():
+	
+	driver = webdriver.Chrome()
+	
+	driver.get("https://www.google.com/")
+	time.sleep(2)
+	driver.quit()
 
 #task_to_do()
 #op_one()
