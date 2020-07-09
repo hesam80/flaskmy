@@ -1,9 +1,14 @@
-import os, re, shutil , requests , sendsms
+import os, re, shutil , requests , sendsms, time
 import pandas as pd
 from pandas import  read_excel
 import numpy as np
 from bs4 import BeautifulSoup
 import openpyxl
+from selenium import webdriver
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
 
 
 def display_menu():
@@ -41,7 +46,7 @@ def display_menu():
 	elif selected=="6":
 		pass
 	elif selected=="7":
-		pass
+		whatsup_bot()
 	elif selected=="8":
 		pass
 
@@ -151,7 +156,12 @@ S/N ON:367
 	print(len(('P/N OFF:')))
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
-
+def whatsup_bot():
+	driver=webdriver.Chrome()
+	driver.get('https://web.whatsapp.com/')
+	name=input("enter name: ")
+	msg=input("enter message : ")
+	user_whatsup=driver.find_element_by_xpath('//span[@title="{}"]'.format)
 #task_to_do()
 #op_one()
 #pandas_practce(op_one)
