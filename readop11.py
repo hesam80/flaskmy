@@ -16,11 +16,11 @@ def display_menu():
 	print("************************************************")
 	selected = input(f"""WHICH ONE? (1-8)
 	1) RUN pandas_practce
-	2) RUN op_one
+	2) RUN insert into excel
 	3) RUN task to do
 	4) RUN tahlil_defect
 	5) RUN tahlil_defect_op1
-	6) RUN scrabbling
+	6) RUN whatsup
 	7) RUN myscrabing
 	8) Run APIs
 	9) Run sendsms BTC pass
