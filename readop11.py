@@ -200,13 +200,12 @@ def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=None,
 def tahlil_defect():
 	
 	
-	tag="""AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.
+	tag="""TAIL NAV LIT ASSY REPLACED WITH S.B PART IAW AMM 33-42-11 CHECK FOUND OK 
 P/N Name:
-P/N OFF:4372C000
-S/N OFF:244185-3
-P/N ON:4372C000
-S/N ON:1195
-
+P/N OFF:2LA001625-07
+S/N OFF:NIL
+P/N ON:2LA001625-07
+S/N ON:1228254
 ."""
 	multi = """PACK VLV #2 REPLACED WITH S/P IAW 21-10-11 PB 401 
 P/N Name:
@@ -221,12 +220,18 @@ S/N OFF:2712005
 P/N ON:AHA1489
 S/N ON:19956."""
 
+	temp="""P/N Name:
+P/N OFF:
+S/N OFF:
+P/N ON:
+S/N ON:."""
+
 
 	#length=len(tag)
 	#print(tag+str(length))
-	print(len(tease))
-	print("tease:",tease)
-	filter_tag=tease[(-1)*(int(tag.find('P/N OFF:'))):]
+	print("toole temp",len(temp))
+	print("tag:",tag)
+	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
 	filter_1st= filter_tag.replace('P/N OFF', '')
 	filter_2nd= filter_1st.replace('S/N OFF', '')
