@@ -35,7 +35,7 @@ def display_menu():
     if selected=="1":
         easy_wtsup()
     elif selected=="2":
-        pass
+        my_whati()
         
     elif selected=="3":
         pass
@@ -195,11 +195,10 @@ def easy_wtsup():
         time.sleep(1)
 
 def my_whati():
-        target = "'Baba'"
+        target = "Baba"
+        text = "Hi"
 
-    # can comment out below line
-    print(target)
-
+    
     # Driver to open a browser
     driver = webdriver.Firefox()
 
@@ -213,39 +212,11 @@ def my_whati():
     wait5 = WebDriverWait(driver,50)
     
 
-    # Message to send list
-    # 1st Parameter: Hours in 0-23
-    # 2nd Parameter: Minutes
-    # 3rd Parameter: Seconds (Keep it Zero)
-    # 4th Parameter: Message to send at a particular time
-    # Put '\n' at the end of the message, it is identified as Enter Key
-    # Else uncomment Keys.Enter in the last step if you dont want to use '\n'
-    # Keep a nice gap between successive messages
-    # Use Keys.SHIFT + Keys.ENTER to give a new line effect in your Message
-    msgToSend = [
-                    [12, 32, 0, "Hello! This is test Msg. Please Ignore." + Keys.SHIFT + Keys.ENTER + "http://bit.ly/mogjm05"]
-                ]
 
-    # Count variable to identify the number of messages to be sent
-    count = 0
-    while count<len(msgToSend):
-
-        # Identify time
-        curTime = datetime.datetime.now()
-        curHour = curTime.time().hour
-        curMin = curTime.time().minute
-        curSec = curTime.time().second
-
-        # if time matches then move further
-        if msgToSend[count][0]==curHour and msgToSend[count][1]==curMin and msgToSend[count][2]==curSec:
-            # utility variables to tract count of success and fails
-            success = 0
-            sNo = 1
-            failList = []
 
             # Iterate over selected contacts
             
-                print(sNo, ". Target is: " + target)
+                print(" Target is: " + target)
                 sNo+=1
                 try:
                     # Select the target
@@ -261,7 +232,7 @@ def my_whati():
                             By.ID, "input-chatlist-search"
                         )))
                         inputSearchBox = driver.find_element_by_id("input-chatlist-search")
-                        time.sleep(0.5)
+                        time.sleep(2)
                         # click the search button
                         driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div[2]/div/button').click()
                         time.sleep(1)
