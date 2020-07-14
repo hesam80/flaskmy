@@ -107,40 +107,43 @@ P/N OFF:3502B000-004
 S/N OFF:1074
 P/N ON:3502B000-003
 S/N ON:16755-3
-."""
+"""
 	tease="""P/N Name:
 P/N OFF:aha1489
 S/N OFF:2712005
 P/N ON:AHA1489
-S/N ON:19956."""
+S/N ON:19956"""
 
 	temp="""P/N Name:
 P/N OFF:
 S/N OFF:
 P/N ON:
-S/N ON:."""
+S/N ON:"""
 
 
-		
+	sentences=input(f"select multi or tag:  ")	
+	if sentences=="multi":
+		sentences=multi
+
+	elif sentences=="tag":
+		sentences=tag
 	#length=len(tag)
 	#print(tag+str(length))
-	print("toole temp",len(tag))
-	print("tag:",tag)
-	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
+	filter_tag=sentences[(-1)*(int(sentences.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
-	filter_1st= filter_tag.replace('P/N OFF', '')
-	filter_2nd= filter_1st.replace('S/N OFF', '')
-	filter_3nd= filter_2nd.replace('P/N ON', '')
-	filter_4nd= filter_3nd.replace('S/N ON', '')
+	filter_1st= filter_tag.replace('P/N OFF:', '')
+	filter_2nd= filter_1st.replace('S/N OFF:', '')
+	filter_3nd= filter_2nd.replace('P/N ON:', '')
+	filter_4nd= filter_3nd.replace('S/N ON:', '')
 
 	#print(filter_tag.replace('P/N ON:', ''))
-	print("Replace string is:",filter_tag)
-	print("toole string",len(tag))
+	print("Replace string is:",filter_4nd)
+	print("filter",filter_tag)
 	pnnumber=(-1)*(int(filter_4nd.find('P/N')-8))
 	#pnnumber+=8
-	print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
-	print(len((filter_tag)))
-	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+	#print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
+	#print(len((filter_tag)))
+	#return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
 
 
