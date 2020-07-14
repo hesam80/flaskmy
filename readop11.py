@@ -18,8 +18,8 @@ def display_menu():
 	1) RUN pandas_practce
 	2) RUN insert into excel
 	3) RUN task to do
-	4) RUN tahlil_defect
-	5) RUN tahlil_defect_op1
+	4) RUN tahlil_defect_op1
+	5) RUN tahlil_defect
 	6) RUN whatsup
 	7) RUN myscrabing
 	8) Run APIs
@@ -227,9 +227,10 @@ P/N ON:
 S/N ON:."""
 
 
+		
 	#length=len(tag)
 	#print(tag+str(length))
-	print("toole temp",len(temp))
+	print("toole temp",len(tag))
 	print("tag:",tag)
 	filter_tag=tag[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
@@ -240,7 +241,7 @@ S/N ON:."""
 
 	#print(filter_tag.replace('P/N ON:', ''))
 	print("Replace string is:",filter_tag)
-	print("toole string",len(multi))
+	print("toole string",len(tag))
 	pnnumber=(-1)*(int(filter_4nd.find('P/N')-8))
 	#pnnumber+=8
 	print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
