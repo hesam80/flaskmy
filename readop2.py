@@ -138,8 +138,10 @@ S/N ON:"""
 
 	#print(filter_tag.replace('P/N ON:', ''))
 	print("Replace string is:",filter_4nd)
-	print("filter",filter_tag)
-	pnnumber=(-1)*(int(filter_4nd.find('P/N')-8))
+	#print("filter",filter_tag)
+	pnnumber=int(sentences.find('P/N OFF:'))
+	print(int(sentences.find('P/N OFF:')))
+	print(filter_4nd[pnnumber:])
 	#pnnumber+=8
 	#print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
 	#print(len((filter_tag)))
