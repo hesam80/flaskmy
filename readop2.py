@@ -101,12 +101,12 @@ S/N OFF:NIL
 P/N ON:2LA001625-07
 S/N ON:1228254
 ."""
-	multi = """PACK VLV #2 REPLACED WITH S/P IAW 21-10-11 PB 401 
-P/N Name:
-P/N OFF:3502B000-004
-S/N OFF:1074
-P/N ON:3502B000-003
-S/N ON:16755-3
+	multi = """FOR T/S FUEL FILTER REPLACED WITH S/B PART & ENG RUN UP PERFORMED IAW AMM 73-10-04 P401.
+
+P/N OFF:2-310-073-01
+S/N OFF:NIL
+P/N ON:2-310-073-01
+S/N ON:NIL
 """
 	tease="""P/N Name:
 P/N OFF:aha1489
@@ -119,33 +119,54 @@ P/N OFF:
 S/N OFF:
 P/N ON:
 S/N ON:"""
+	instance='this is a book'
 
 
 	sentences=input(f"select multi or tag:  ")	
 	if sentences=="multi":
 		sentences=multi
+	elif sentences=="temp":
+		sentences=temp
 
 	elif sentences=="tag":
 		sentences=tag
+	elif sentences=="instance":
+		sentences=instance
 	#length=len(tag)
 	#print(tag+str(length))
+	print("toole sentences is : ",(-1)*(int(len(sentences))))
+
 	filter_tag=sentences[(-1)*(int(sentences.find('P/N OFF:'))):]
-	#filter_tag.find('P/N OFF:')
-	filter_1st= filter_tag.replace('P/N OFF:', '')
-	filter_2nd= filter_1st.replace('S/N OFF:', '')
-	filter_3nd= filter_2nd.replace('P/N ON:', '')
-	filter_4nd= filter_3nd.replace('S/N ON:', '')
+	# #filter_tag.find('P/N OFF:')
+	# filter_1st= filter_tag.replace('P/N OFF:', '')
+	# filter_2nd= filter_1st.replace('S/N OFF:', '')
+	# filter_3nd= filter_2nd.replace('P/N ON:', '')
+	# filter_4nd= filter_3nd.replace('S/N ON:', '')
 
 	#print(filter_tag.replace('P/N ON:', ''))
-	print("Replace string is:",filter_4nd)
+	#print("Replace string is:",filter_4nd)
 	#print("filter",filter_tag)
-	pnnumber=int(sentences.find('P/N OFF:'))
-	print(int(sentences.find('P/N OFF:')))
-	print(filter_4nd[pnnumber:])
+	#pnnumber=int(sentences.find('P/N OFF:'))
+	#print(int(sentences.find('P/N OFF:')))
+	#print(filter_4nd[pnnumber:])
 	#pnnumber+=8
 	#print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
 	#print(len((filter_tag)))
 	#return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+	finding='P/N OFF:'
+	filters=int(sentences.find(finding))
+	if filters==-1:
+		print("find not found",filters)
+	else:
+		print("find book yes",filters)
+		print(sentences[filters:])
+	s=int(len(sentences)-1)
+	i=0
+	for i in range(0,s):
+		print(sentences[i:s])
+		i+=1
+		#print(sentences[-1*s:])
+		#s-=1
 
 
 
