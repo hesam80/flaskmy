@@ -127,7 +127,6 @@ S/N ON:"""
 		sentences=multi
 	elif sentences=="temp":
 		sentences=temp
-
 	elif sentences=="tag":
 		sentences=tag
 	elif sentences=="instance":
