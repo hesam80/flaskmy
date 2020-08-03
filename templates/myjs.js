@@ -4,7 +4,7 @@ var  t ;
 //t/=c ;
 //var isIE=(navigator.appVersion.indexOf("MSIE") != -1 &&navigator.userAgent.indexOf("Opera") == -1);
 t=document.getElementById("dvWrapper").style.length; 
-document.getElementsById("pstid").innerHTML.value="heel";
+document.getElementById("pstid").innerHTML.value="heel";
 
 console.log(hllo);
 //console.log(!isIE);
@@ -32,4 +32,4 @@ else{var d = (95000+m)+(10*f)+m;     var tech=d+f-4;   var reli=d+(f*m);}
  setTimeout(function() {test()},200);
 }
 
-document.getElementById("demo").innerHTML="Paragraph changed";
+document.getElementById("demo").value="Paragraph changed";
