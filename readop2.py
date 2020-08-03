@@ -152,7 +152,7 @@ S/N ON:"""
 	#print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
 	#print(len((filter_tag)))
 	#return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
-	finding='P/N OFF:'
+	finding='IAW AMM'
 	filters=int(sentences.find(finding))
 	if filters==-1:
 		print("find not found",filters)
@@ -161,9 +161,9 @@ S/N ON:"""
 		print(sentences[filters:])
 	s=int(len(sentences)-1)
 	i=0
-	for i in range(0,s):
-		print(sentences[i:s])
-		i+=1
+	#for i in range(0,s):
+		#print(sentences[i:s])
+		#i+=1
 		#print(sentences[-1*s:])
 		#s-=1
 
