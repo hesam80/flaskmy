@@ -64,7 +64,7 @@ border-radius: 85px;
            </button>
            <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="menu_item"><a alt="<-BlogDescription->" target="_blank" href="http://mahantech.tk/category/13">Antenna </a></li>
+                <li class="menu_item"><a alt="<-BlogDescription->" target="_blank" href="../category/13">Antenna </a></li>
                 <li class="menu_item"><a alt="<-BlogDescription->" target="_blank" href="http://mahantech.tk/category/2">Multiswitch </a></li>
                 <li class="menu_item"><a alt="<-BlogDescription->" target="_blank" href="http://mahantech.tk/category/36">Diseq</a></li>
                 <li class="menu_item"><a  alt="<-BlogDescription->" target="_blank" href="http://mahantech.tk/archive">Blog </a></li>
@@ -96,7 +96,7 @@ border-radius: 85px;
 										<figcaption>الکتروپارت 9368663893</figcaption>
 								</figure>
 							</div>
-							<p></p>
+							<p>
 							<ul>
 							  <li>axis:60cm to 65cm</li>
 							  <li>Ku-band gains:12.5GHz,38.52dB</li>
@@ -112,16 +112,61 @@ border-radius: 85px;
 							  <li></li>
 							  <li></li>
 							</ul>
-							
+							</p>
 							<p></p>
 							<p id="demo"></p>
                             <a class="btn-sample" alt="<?php the_title(); ?>" target="_blank" href="<?php the_permalink(); ?>">ادامه مطلب &rsaquo;</a>
                             <ul class="info_post">
-                                 <li><a href="#"><span class="icon-calendar"></span>تاریخ : 01-Aug-2020</a></li>
+                                 <li><a href="#"><span class="icon-calendar"></span>تاریخ : 12-Aug-2020</a></li>
                                  <li><a href="#"><span class="icon-user"></span>نویسنده : <-BlogAuthor-></a></li>
                                  <li><a href="#"><span class="icon-tags"></span>عکاسی، دیزاین: <-BlogId-></a></li>
                                  <li><a href="#"><span class="icon-comment"></span>نظرات :  210</a></li>
                             </ul>
+		<script type="text/javascript">
+			 function showUser(str)
+			 {
+			 if (str=="")
+			   {
+			   document.getElementById("txtHint").value="";
+			   return;
+			   } 
+			if (window.XMLHttpRequest)
+			   {// code for IE7+, Firefox, Chrome, Opera, Safari
+			   xmlhttp=new XMLHttpRequest();
+			   }
+			 else
+			   {// code for IE6, IE5
+			   xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			   }
+			 xmlhttp.onreadystatechange=function()
+			   {
+			   if (xmlhttp.readyState==4 && xmlhttp.status==200)
+				 {
+				 document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+				 }
+			   }
+			 xmlhttp.open("GET","getuser.php?q="+str,true);
+			 xmlhttp.send();
+			 }
+     </script>
+ 
+ 
+ 
+<form>
+	 <select name="users" onchange="showUser(this.value)">
+	 <option value="">Select a person:</option>
+	 <option value="1">Peter Griffin</option>
+	 <option value="2">Lois Griffin</option>
+	 <option value="3">Glenn Quagmire</option>
+	 <option value="4">Joseph Swanson</option>
+	 <option value="5">Hesam hoseini</option>
+     <option value="6">Hamed hoseini</option>
+     <option value="7">khayam Attaar</option>
+     <option value="8">Amin mirkamaali</option>
+ </select>
+ </form>
+ <br>
+ <div id="txtHint"><b>Person info will be listed here.</b></div>
 						</div><!--content_post first-->
 					 </div><!--content_center alignleft-->
                     </div><!--content_main row-fluid span12-->
