@@ -126,7 +126,8 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
+# templates/page-dish.html
+templates/page-dish.html
 # Pyre type checker
 .pyre/
 
