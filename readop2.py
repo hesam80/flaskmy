@@ -26,7 +26,7 @@ def display_menu():
 	""")
 	print("select Number is:",selected)
 	if selected=="1":
-		pass
+		write_file()
 	elif selected=="2":
 		pass
 		#print(op_one())
@@ -44,6 +44,11 @@ def display_menu():
 		pass
 
 
+def write_file():
+	f=open("tst1.txt","w+")
+	for i in range(2):
+		f.write("this line is: ", i)
+	f.close()
 
 
 def insert_to_excel():
