@@ -47,7 +47,7 @@ def display_menu():
 def write_file():
 	f=open("tst1.txt","w+")
 	for i in range(2):
-		f.write("this line is: ", i)
+		f.write("this line is:%d\r\n " %(i+1))
 	f.close()
 
 
