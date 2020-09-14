@@ -13,7 +13,7 @@ def display_menu():
 	print("*****  Hello - Hessam Hosseini  ******")
 	print("************************************************")
 	selected = input(f"""WHICH ONE? (1-8)
-	1) RUN pandas_practce
+	1) RUN writing into file
 	2) RUN insert into excel
 	3) RUN task to do
 	4) RUN tahlil_defect_op1
@@ -49,6 +49,7 @@ def write_file():
 	for i in range(2):
 		f.write("this line is:%d\r\n " %(i+1))
 	f.close()
+	print("write  tst1.txt is ok")
 
 
 def insert_to_excel():
