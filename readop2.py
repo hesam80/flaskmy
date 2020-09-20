@@ -28,7 +28,7 @@ def display_menu():
 	if selected=="1":
 		write_file()
 	elif selected=="2":
-		pass
+		wiki_api()
 		#print(op_one())
 	elif selected=="3":
 		pass
@@ -51,6 +51,11 @@ def write_file():
 	f.close()
 	print("write  tst1.txt is ok")
 
+def wiki_api():
+	url=f'https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=black&format=json'
+	response=requests.get(url)
+	prices = str(response.json()['query']['search'])
+	print(prices)
 
 def insert_to_excel():
 	date=tahlil_defect_op1()
