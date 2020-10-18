@@ -66,7 +66,7 @@ def wiki_api(title):
 			print("find not found",filters)
 		else:
 			
-			print(i,"-",title+result[filters:]+"\n")
+			print(i+int(1),"-",title+result[filters:]+"\n")
 
 			
 	
