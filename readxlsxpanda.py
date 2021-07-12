@@ -1,5 +1,39 @@
 from pandas import  read_excel
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+import pandas as pd
+from exceldoc import *
+import sqlite3
+import xlrd
+import os.path
+
+def readexcl():
+    df=pd.read_excel('comptst.xlsx',0)
+    ind=df.index
+    decprition=df['dec']
+    part=df['pn']
+    serof=df['snf']
+    seron=df['snn']
+
+    for i in df.index:
+    #print("To iterate over the list we can use a loop:",df['mandeh'][i])
+	    print(';', decprition[i])
+=======
+import numpy as np
+def pdnp():
+	df=read_excel('tst.xlsx',0)
+	tst=df.head()
+	sum_bedehkar=df['bedehkar'].sum()
+	print(tst)
+	print("sum_bedehkar is" ,sum_bedehkar)
+	min_bedehkar=np.min(df['bedehkar'])
+	print("min_bedehkar is ",min_bedehkar)
+	max_mandeh=np.max(df['mandeh'])
+	print("max_mandeh is ",max_mandeh)
+=======
 	
+>>>>>>> master
 
 #resource tamame inha dar
 def createtable():
@@ -15,6 +49,20 @@ def createtable():
             
     db.commit()
 
+<<<<<<< HEAD
+def np_tst2():
+    # normalize karadane array
+	Z = np.random.random((5,5))
+	Zmax, Zmin = Z.max(), Z.min()
+	Z = (Z - Zmin)/(Zmax - Zmin)
+	print("Z and Zmax, Zmin: ", Z, Zmax , Zmin)
+	today = np.datetime64('today', 'D')
+	#today+=1
+	print("today is: ",today)
+>>>>>>> home
+	
+def np_tst_gous():
+=======
 def insert_excel_todb():
     with sqlite3.connect('cmp.db3') as db, \
         ExcelDocument('comptst.xlsx') as src:
@@ -44,6 +92,7 @@ def show_data():
 def delete():
     db = sqlite3.connect('cmp.db3')
     db.execute('DELETE FROM cmp;')
+>>>>>>> master
 
 def test():
     db = sqlite3.connect('test.db')
@@ -107,6 +156,10 @@ def tst_fetchone():
     
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> master
 createtable()
 #insert_excel_todb()
 tst_fetchone()
@@ -121,3 +174,11 @@ print("sum_bedehkar is" ,sum_bedehkar)
 min_bedehkar=np.min(df['bedehkar'])
 print("min_bedehkar is ",min_bedehkar)
 >>>>>>> origin/edare
+<<<<<<< HEAD
+=======
+#pdnp()
+#np_tst2()
+np_tst_gous()
+>>>>>>> home
+=======
+>>>>>>> master

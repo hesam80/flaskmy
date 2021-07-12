@@ -31,5 +31,14 @@ def zoj(n):
 
 
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+zoj(13.15)
+=======
+zoj(10.14)
+>>>>>>> home
+#tahlil()
+=======
 zoj(13.15)
 #tahlil()
+>>>>>>> master
