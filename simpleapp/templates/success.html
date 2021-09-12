@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}success{%endblock %}
+
+{% block content %}
+	<h1>vazne az indexx page ba post method  {{vazn}}</h1>
+	<h1>az index page {{hit}}</h1>
+	<h2>in this field number</h2>
+	<li><a href="{{url_for('indexx')}}" target="_blank">goto index</a></li>
+	<li><a href="{{url_for('success')}}" target="_blank">goto success</a></li>
+	<li><a href="{{url_for('resultst')}}" target="_blank">goto result</a></li>
+	<h3>in addad random tolid mishavad</h3>
+	<li><label>number</label></<input type="text" name="number" value="{{number}}"></li>
+	<input type="text" name="hit" value="{{hit}}">
+	<input type="text" name="vazn" value="{{vazn}}">
+
+<ul id="navigation">
+    {% for item in navigation %}
+        <li><h2><a href="{{ item.href }}">go to</a></h2></li>
+    {% endfor %}
+    </ul>
+	<div>
+    {% if True %}
+       <h1>yay</h1> 
+    {% endif %}
+</div>
+{% endblock %}

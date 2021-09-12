@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block title %}success inherit{%endblock %}
+
+{% block content %}
+<h1>{{ self.title() }}</h1>
+<h1>resultst page {{num}}</h1>
+	<h1>az index page {{hit}}</h1>
+	<h2>in this field number</h2>
+	<li><a href="{{url_for('indexx')}}" target="_blank">goto indexx</a></li>
+	<li><a href="{{url_for('success')}}" target="_blank">goto success</a></li>
+	<li><a href="{{url_for('resultst')}}" target="_blank">goto resultst</a></li>
+	<h3>in addad random tolid mishavad</h3>
+	<button autofocus="autofocus" onclick="location.href='{{url_for('resultst')}}'">click to generate random number</button>
+	<input type="text" name="number" value="{{number}}">
+	<input type=button onClick="location.href='{{url_for('resultst')}}'" value='click here'>
+{% endblock %}
+<ul id="navigation">
+    {% for item in navigation %}
+        <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+    {% endfor %}
+    </ul>

@@ -1,0 +1,15 @@
+kind: ExternalService
+name: hello-world
+spec:
+  image: ${IMAGE_URL}:${TAG}
+  image_pull_policy: Always
+  image_pull_secret: $SEC_NAME
+  env:
+    - name: DEBUG
+      value: 1
+    - name: API_KEY
+      value: ${API_KEY}
+
+  domains:
+     - name: hello-world.my-company.com
+     - name: hw.my-company.com
