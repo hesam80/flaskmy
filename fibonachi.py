@@ -1,6 +1,21 @@
 import sys
 import stdio
-print("javaabe addade count : ")
+
+def display_menu():
+    selected = input(f"""which task number select
+    if select 1 fibonachi run
+    if select 2 length run
+
+    """)
+    print("select Number is:",selected)
+    if selected == "1":
+        n = int(input(f""" addade morede nazar ra vaared konid """))
+        fibonachi(n)
+    if selected == "2":
+        n = int(input(f""" addade morede nazar ra vaared konid """))
+        strlengh(n)
+
+
 def fibonachi(n):
 	a=0
 	b=1
@@ -10,6 +25,15 @@ def fibonachi(n):
 		
 		a, b = b, a+b
 	print()
-count = stdio.readInt()
-fibonachi(count)
+	
+
+def strlengh(n):
+        
+        s=fibonachi(n)
+        strleng=readInt(len(s))
+        print(s)
+        print(strleng[0])
+
+        
+display_menu()
 
