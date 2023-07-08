@@ -11,7 +11,7 @@ def display_menu():
     if selected == "1":
         n = int(input(f""" addade morede nazar ra vaared konid """))
         fibonachi(n)
-    if selected == "2":
+    elif selected == "2":
         n = int(input(f""" addade morede nazar ra vaared konid """))
         strlengh(n)
 
