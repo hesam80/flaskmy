@@ -33,9 +33,9 @@ def fibonachi(n):
 	
 
 def strlengh(n):
-        
+       r=range(10) 
         s=fibonachi(n)
-        strleng=readInt(len(s))
+        strleng=readInt(len(r))
         print(s)
         print(strleng[0])
 
