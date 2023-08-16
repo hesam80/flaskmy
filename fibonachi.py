@@ -33,10 +33,10 @@ def fibonachi(n):
 	
 
 def strlengh(n):
-       r=range(10) 
-        s=fibonachi(n)
-        strleng=readInt(len(r))
-        print(s)
+        digits =range(n) 
+        fibonachi(n)
+        strleng="".join(str(n) for n in digits)
+        print("range ",n, "addad: ",strleng)
         print(strleng[0])
 
 def tstregex(n):
