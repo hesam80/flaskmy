@@ -31,13 +31,14 @@ def fibonachi(n):
 		a, b = b, a+b
 	print()
 	
-
 def strlengh(n):
         digits =range(n) 
         fibonachi(n)
         strleng="".join(str(n) for n in digits)
+        toole_series=len(str(fibonachi(n)))
         print("range ",n, "addad: ",strleng)
-        print(strleng[0])
+        print(strleng[0], '\n')
+        print("toole jomle=", toole_sries, end='')
 
 def tstregex(n):
     s = _readRegExp(r'[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?')
