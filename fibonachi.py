@@ -38,7 +38,7 @@ def strlengh(n):
         toole_series=len(str(fibonachi(n)))
         print("range ",n, "addad: ",strleng)
         print(strleng[0], '\n')
-        print("toole jomle=", toole_series, end='')
+        print("toole jomle=", toole_series, '\n')
 
 def tstregex(n):
     s = _readRegExp(r'[-+]?(\d+(\.\d*)?|\.\d+)([eE][-+]?\d+)?')
