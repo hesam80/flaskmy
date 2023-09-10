@@ -8,26 +8,6 @@ import os.path
 def readexcl():
     df=pd.read_excel('comptst.xlsx',0)
     ind=df.index
-    decprition=df['dec']
-    part=df['pn']
-    serof=df['snf']
-    seron=df['snn']
-
-    for i in df.index:
-    #print("To iterate over the list we can use a loop:",df['mandeh'][i])
-	    print(';', decprition[i])
-	
-
-def createtable():
-    with sqlite3.connect('cmp.db3') as db:
-        db.row_factory = sqlite3.Row
-        db.execute(
-        "CREATE TABLE IF NOT EXISTS cmp(" \
-            "id INTEGER PRIMARY KEY," \
-            "dec TEXT NOT NULL," \
-            "pn TEXT NOT NULL," \
-            "snf TEXT NOT NULL," \
-            "snn TEXT NOT NULL);")
             
     db.commit()
 
@@ -117,7 +97,7 @@ def tst_fetchone():
     
 
 
-createtable()
+#createtable()
 #insert_excel_todb()
-tst_fetchone()
-#readexcl()
+#tst_fetchone()
+readexcl()
