@@ -18,6 +18,7 @@ def display_menu():
        createtable()
     elif selected == "3":
         insert_excel_todb()
+        read_db()
 
 
 def read_from_excel(excelfilename):
@@ -48,11 +49,29 @@ def createtable():
     db.commit()
 
 def insert_excel_todb():
+    createtable()
     with sqlite3.connect('cmp.db3') as db, \
         ExcelDocument('comptst.xlsx') as src:
         insert_template = "INSERT INTO cmp " \
          "(dec, pn, snf, snn) " \
          "VALUES (?, ?, ?, ?);"
+    db.commit()
+
+def read_db():
+    createtable()
+    with sqlite3.connect('cmp.db3') as db, \
+        ExcelDocument('comptst.xlsx') as src:
+        insert_template = "INSERT INTO cmp " \
+         "(dec, pn, snf, snn) " \
+         "VALUES (?, ?, ?, ?);"
+        cur = db.cursor()
+        res=cur.execute(
+            "SELECT * FROM src ;"
+        )
+        res.fetchone()
+        print("ok",res.fetchone())
+    db.commit()
+
 
 display_menu()
 
