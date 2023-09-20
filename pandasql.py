@@ -115,6 +115,7 @@ def read_op1():
         expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
         x =expose.split()
         x=pd.DataFrame(x)
+        return x
 
  
 
