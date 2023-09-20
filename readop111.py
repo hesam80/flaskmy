@@ -47,8 +47,8 @@ def display_menu():
 
 
 def op_one():
-	df=read_excel('op1.xlsx',0)
-	return df['Chapter'].std()
+	df=pd.read_excel('op1_moq.xlsx', sheet_names='Export from MACS', index_col='Item')
+	#return df['Chapter'].std()
 	#tst1=df1.head()
 	#print("sort date",date_sort)
 	#tst=df.head()

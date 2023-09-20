@@ -1,13 +1,14 @@
 import pandas as pd
-from exceldoc import *
 import sqlite3
 import xlrd
 import os.path
+
 def display_menu():
     selected = input(f"""which task number select
     if select 1 read_from_excel run
-    if select 2 length run
-    if select 3 tstregex
+    if select 2 sqlite createtable
+    if select 3 read_db
+    if select 4 tstop1 pandas
 
     """)
     print("select Number is:",selected)
@@ -16,9 +17,12 @@ def display_menu():
         read_from_excel(excelfilename)
     elif selected == "2":
        createtable()
+       connect()
     elif selected == "3":
         insert_excel_todb()
         read_db()
+    elif selected == "4":
+        read_op1()
 
 
 def read_from_excel(excelfilename):
@@ -29,11 +33,13 @@ def read_from_excel(excelfilename):
     snon=data['S/N  ON']
     date=data['DATE']
     ata=data['ATA']
+    #return data
     print(data)
     column_headers = data.keys().values.tolist()
     print("The Column Header :", column_headers)
     print("The Column Header :", data.columns.ravel())
     print(ata)
+    
     
 def createtable():
     with sqlite3.connect('cmp.db3') as db:
@@ -52,7 +58,7 @@ def insert_excel_todb():
     createtable()
     with sqlite3.connect('cmp.db3') as db, \
         ExcelDocument('comptst.xlsx') as src:
-        insert_template = "INSERT INTO cmp " \
+        insert_template = "INSERT INTO db " \
          "(dec, pn, snf, snn) " \
          "VALUES (?, ?, ?, ?);"
     db.commit()
@@ -68,9 +74,52 @@ def read_db():
         res=cur.execute(
             "SELECT * FROM src ;"
         )
+        for row in db.execute(res).fetchall():
+            print(';'.join(row))
         res.fetchone()
         print("ok",res.fetchone())
     db.commit()
+
+def connect():
+    db = sqlite3.connect('cmp.db3')
+    insert_template = "INSERT INTO cmp " \
+         "(dec, pn, snf, snn) " \
+         "VALUES (?, ?, ?, ?);"
+    data= pd.read_excel('comptst.xlsx')
+    descripe=data['DESCRIPTION']
+    PNO=data['P/N']
+    snof=data['S/N  OFF']
+    snon=data['S/N  ON']
+    date=data['DATE']
+    ata=data['ATA']
+    db.executemany(insert_template )
+    db.commit
+    print(data)
+
+def read_op1():
+    df=pd.read_excel('op1_moq.xlsx' , sheet_name='Export from MACS')
+    #print(df)
+    defect_count=df.groupby('Chapter').size()
+    print (defect_count)
+    actions=df['Action']
+    for action in actions:
+        
+        #print(action)
+        #print(action.find('P/N OFF:'))
+        filter_tag=action[(int(action.find('P/N OFF:'))):]
+            #filter_tag.find('P/N OFF:')
+        filter_1st= filter_tag.replace('P/N OFF:', '')
+        filter_2nd= filter_1st.replace('S/N OFF:', '')
+        filter_3nd= filter_2nd.replace('P/N ON:', '')
+        filter_4nd= filter_3nd.replace('S/N ON:', '')
+        expose= filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+        x =expose.split()
+        x=pd.DataFrame(x)
+
+ 
+
+
+
 
 
 display_menu()
