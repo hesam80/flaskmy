@@ -97,7 +97,7 @@ def connect():
     print(data)
 
 def read_op1():
-    df=pd.read_excel('op1_moq.xlsx' , sheet_name='Export from MACS')
+    df=pd.read_excel('MON.xlsx' , sheet_name='Export from MACS')
     #print(df)
     defect_count=df.groupby('Chapter').size()
     print (defect_count)

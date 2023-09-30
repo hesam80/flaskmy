@@ -98,8 +98,8 @@ def insert_to_excel():
 
 
 def tahlil_defect_op1():
-	df=read_excel('op1.xlsx',0)
-	for i in range(6,13):
+	df=pd.read_excel('MON.xlsx' , sheet_name='Export from MACS')
+	for i in range(1):
 		action=df['Action'][i]
 		print(action)
 		print(action.find('P/N OFF:'))
@@ -115,7 +115,7 @@ def tahlil_defect_op1():
 			i+=1
 			x=pd.DataFrame(x)
 			print(x)
-			return x
+			x.to_excel("MON.xlsx",sheet_name='Sheet_name_1')
 		elif action.find('P/N OFF:') == '-1':
 			#print("no part is changed")
 			#print(x,len(expose))
