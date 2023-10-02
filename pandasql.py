@@ -102,6 +102,8 @@ def read_op1():
     defect_count=df.groupby('Chapter').size()
     print (defect_count)
     actions=df['Action']
+    defects=df["Defect"]
+    print(defect[2])
     for action in actions:
         
         #print(action)
