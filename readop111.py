@@ -4,6 +4,7 @@ from pandas import  read_excel
 import numpy as np
 from bs4 import BeautifulSoup
 import openpyxl
+from telnetlib import Telnet
 
 
 def display_menu():
@@ -39,9 +40,9 @@ def display_menu():
 	elif selected=="5":
 		tahlil_defect()
 	elif selected=="6":
-		pass
+		str_practice()
 	elif selected=="7":
-		pass
+		telnet()
 	elif selected=="8":
 		pass
 
@@ -240,6 +241,18 @@ S/N ON:19956."""
 	print(filter_4nd[int(filter_4nd.find('P/N'))+9:].strip())
 	print(len((filter_tag)))
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
+
+def str_practice():
+    tease = tease.tahlil_defect
+    print(tease)
+
+def telnet():
+    
+    from telnetlib import Telnet
+    with Telnet('localhost', 8000) as tn:
+        tn.interact()
+
+
 
 
 #task_to_do()

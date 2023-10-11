@@ -4,7 +4,7 @@ import urllib3 as urlib
 import logging
 
 logging.basicConfig(level=logging.INFO)
-
+# liste authors by name start A in wikipedia ro neshaan mide
 def showbook(name):
 	try:
 		name=urlib.quote_plus(name)

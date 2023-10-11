@@ -103,8 +103,9 @@ def read_op1():
     print (defect_count)
     actions=df['Action']
     defects=df["Defect"]
-    print(defect[2])
-    for action in actions:
+    #print(defects[2])
+    
+    for action in actions[2]:
         
         #print(action)
         #print(action.find('P/N OFF:'))
