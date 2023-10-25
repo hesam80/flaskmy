@@ -20,7 +20,7 @@ def display_menu():
 	3) RUN task to do
 	4) RUN tahlil_defect
 	5) RUN tahlil_defect_op1
-	6) RUN scrabbling
+	6) RUN str practice
 	7) RUN myscrabing
 	8) Run APIs
 	9) Run sendsms BTC pass
@@ -42,7 +42,7 @@ def display_menu():
 	elif selected=="6":
 		str_practice()
 	elif selected=="7":
-		telnet()
+		pass
 	elif selected=="8":
 		pass
 
@@ -199,7 +199,6 @@ def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=None,
 
 def tahlil_defect():
 	
-	
 	tag="""AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.
 P/N Name:
 P/N OFF:4372C000
@@ -243,14 +242,8 @@ S/N ON:19956."""
 	return filter_4nd[int(filter_4nd.find('P/N'))+9:].strip()
 
 def str_practice():
-    tease = tease.tahlil_defect
-    print(tease)
-
-def telnet():
-    
-    from telnetlib import Telnet
-    with Telnet('localhost', 8000) as tn:
-        tn.interact()
+    tease = tahlil_defect
+    print(tease())
 
 
 
