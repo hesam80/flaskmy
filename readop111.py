@@ -30,8 +30,8 @@ def display_menu():
 	if selected=="1":
 		pandas_practce()
 	elif selected=="2":
-		insert_to_excel()
-		#print(op_one())
+		#insert_to_excel()
+		print(op_one())
 	elif selected=="3":
 		pandas_practce()
 		task_to_do()
@@ -42,13 +42,13 @@ def display_menu():
 	elif selected=="6":
 		str_practice()
 	elif selected=="7":
-		pass
+		pandasopenai()
 	elif selected=="8":
 		pass
 
 
 def op_one():
-	df=pd.read_excel('op1_moq.xlsx', sheet_names='Export from MACS', index_col='Item')
+	df=pd.read_excel('MON.xlsx', sheet_names='Export from MACS', index_col='Item')
 	#return df['Chapter'].std()
 	#tst1=df1.head()
 	#print("sort date",date_sort)
@@ -199,6 +199,7 @@ def append_df_to_excel(filename, df, sheet_name='Sheet1', startrow=None,
 
 def tahlil_defect():
 	
+	
 	tag="""AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.
 P/N Name:
 P/N OFF:4372C000
@@ -219,12 +220,16 @@ P/N OFF:aha1489
 S/N OFF:2712005
 P/N ON:AHA1489
 S/N ON:19956."""
-
+    
+	actions = ["tags","multi","tease"]
+	for action in actions :
+		print("ok")
+		print("Toole string ",action, len(actions))
 
 	#length=len(tag)
 	#print(tag+str(length))
-	print(len(tease))
-	print("tease:",tease)
+	print("Toole string tease: ",len(tease))
+	print("tease:",actions[1])
 	filter_tag=tease[(-1)*(int(tag.find('P/N OFF:'))):]
 	#filter_tag.find('P/N OFF:')
 	filter_1st= filter_tag.replace('P/N OFF', '')
@@ -245,6 +250,19 @@ def str_practice():
     tease = tahlil_defect
     print(tease())
 
+def pandasopenai():
+    from pandasai import SmartDataframe
+    df = pd.DataFrame({
+    "country": [
+        "United States", "United Kingdom", "France", "Germany", "Italy", "Spain", "Canada", "Australia", "Japan", "China"],
+    "gdp": [
+        19294482071552, 2891615567872, 2411255037952, 3435817336832, 1745433788416, 1181205135360, 1607402389504, 1490967855104, 4380756541440, 14631844184064
+    ],
+    })
+    df.head()
+
+# df.chat('Which are the countries with GDP greater than 3000000000000?')
+   
 
 
 
