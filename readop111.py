@@ -48,13 +48,13 @@ def display_menu():
 
 
 def op_one():
-	df=pd.read_excel('MON.xlsx', sheet_names='Export from MACS', index_col='Item')
+	df=pd.read_excel('MON.xlsx')
 	#return df['Chapter'].std()
 	#tst1=df1.head()
 	#print("sort date",date_sort)
-	#tst=df.head()
-	dp=df.groupby('Chapter').size()
-	print(dp)
+	tst=df.head()
+    #dp=df.groupby('Chapter').size()
+	print(tst)
 	#print(df.dtypes)
 	#print(df.count())
 def pandas_practce():
@@ -259,7 +259,15 @@ def pandasopenai():
         19294482071552, 2891615567872, 2411255037952, 3435817336832, 1745433788416, 1181205135360, 1607402389504, 1490967855104, 4380756541440, 14631844184064
     ],
     })
-    df.head()
+    # moghayse mafhoom jomlaat
+    tasks=['the cat sat on the mat.','the cat sat over the fence.']
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    from sklearn.metrics.pairwise import cosine_similarity
+    tfid=TfidfVectorizer()
+    tfid_matrix=tfid.fit_transform(tasks)
+    similariy=cosine_similarity(tfid_matrix[0],tfid_matrix[1])
+    print(similariy)
+
 
 # df.chat('Which are the countries with GDP greater than 3000000000000?')
    
