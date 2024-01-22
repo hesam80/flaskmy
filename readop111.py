@@ -21,8 +21,8 @@ def display_menu():
 	4) RUN tahlil_defect
 	5) RUN tahlil_defect_op1
 	6) RUN str practice
-	7) RUN myscrabing
-	8) Run APIs
+	7) RUN weibull_predict
+	8) Run new_analyze
 	9) Run sendsms BTC pass
 	PLEASE SPECIFIE WITH A NUMBER: 
 	""")
@@ -42,9 +42,9 @@ def display_menu():
 	elif selected=="6":
 		str_practice()
 	elif selected=="7":
-		pandasopenai()
+		weibull_predict()
 	elif selected=="8":
-		pass
+		new_analyze()
 
 
 def op_one():
@@ -221,7 +221,7 @@ S/N OFF:2712005
 P/N ON:AHA1489
 S/N ON:19956."""
     
-	actions = ["tags","multi","tease"]
+	actions = [tag,multi,tease]
 	for action in actions :
 		print("ok")
 		print("Toole string ",action, len(actions))
@@ -251,7 +251,7 @@ def str_practice():
     print(tease())
 
 def pandasopenai():
-    from pandasai import SmartDataframe
+    #from pandasai import SmartDataframe
     df = pd.DataFrame({
     "country": [
         "United States", "United Kingdom", "France", "Germany", "Italy", "Spain", "Canada", "Australia", "Japan", "China"],
@@ -260,16 +260,94 @@ def pandasopenai():
     ],
     })
     # moghayse mafhoom jomlaat
-    tasks=['the cat sat on the mat.','the cat sat over the fence.']
+    tags="AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK."
+
+    multi = "pip install aspose-words"
+    tasks={"defect1": tags, "defec2": multi}
+
+    
+    actions = ["AFTER T/S FOUND DUC TEMP SENSOR FAULTY , SO REPLACED WITH S/P IAW AMM 21-60-21 P 201 CHECK FOUND OK.","PACK VLV #2 REPLACED WITH S/P IAW 21-10-11 PB 401."]
     from sklearn.feature_extraction.text import TfidfVectorizer
     from sklearn.metrics.pairwise import cosine_similarity
     tfid=TfidfVectorizer()
     tfid_matrix=tfid.fit_transform(tasks)
     similariy=cosine_similarity(tfid_matrix[0],tfid_matrix[1])
     print(similariy)
+    tfidf = TfidfVectorizer(analyzer='char_wb', ngram_range=(1, 2))
+    text = ['sachin is a good player .', 'he is a good man .']
+    X = tfidf.fit_transform(actions)
+    print(tfidf.get_feature_names_out())
 
+def weibull_predict():
+    from predictr import Analysis
+    # Data from testing
+    # Failures and suspensions are lists containing the values
+    
+    suspensions = [1.62876357, 1.62876357, 1.62876357, 1.62876357]
+    # Weibull Analysis
+    x = Analysis(df=failures, ds=suspensions, show=True)
+    
+    x.mrr()
+    x.mle()
+    df = pd.DataFrame({
+    "TTF": [ 
+        180, 450, 740, 1040, 1360, 1700, 2070, 2460, 2890, 3380, 3870, 4430, 5070 ,5790 ,6630, 7530, 8880, 10520, 12920, 17540
 
-# df.chat('Which are the countries with GDP greater than 3000000000000?')
+    ]
+    })
+    print(df.head)
+    #print(f"MRR: beta={x.beta:2f}, eta={x.eta:2f}\nMLE: beta={y.beta:2f}, eta={y.eta:2f}\n")
+    
+def new_analyze():
+        # code
+    import pandas as pd
+    import matplotlib.pyplot as plt
+    import scipy.stats as ss
+    import numpy as np
+    import seaborn as sns
+    import weibull
+
+    # generate standard weibull distribution of different Shape parameter
+    gamma_1 = np.random.weibull(a=1,size=1000)
+    gamma_half = np.random.weibull(a=0.5,size=1000)
+    gamma_5 = np.random.weibull(a=5,size=1000)
+    gamma_10 = np.random.weibull(a=10,size=1000)
+
+    # plot different Weibull distribution
+    sns.set_style('darkgrid')
+    fig, ax = plt.subplots(2,2)
+    sns.histplot(gamma_1,kde=True,ax= ax[0,0] )
+    ax[0,0].set_title('Gamma = 1 ')
+    sns.histplot(gamma_half,kde=True, ax= ax[0,1], legend='Y=0.5')
+    ax[0,1].set_ylim([0,200])
+    ax[0,1].set_title('Gamma = 0.5 ')
+    sns.histplot(gamma_5,kde=True, ax= ax[1,0], legend='Y=5')
+    ax[1,0].set_title('Gamma = 5 ')
+    sns.histplot(gamma_10,kde=True, ax= ax[1,1], legend='Y=10')
+    ax[1,1].set_title('Gamma = 10 ')
+    plt.show()
+
+    # load dataset
+    specimen_strength = pd.read_csv('weibull.csv', header=None)
+    specimen_strength.head()
+
+    # perform weibull analysis
+    analysis=weibull.Analysis(specimen_strength[0])
+
+    # Here, we can fit using two method, mle (maximum likelihood)
+    # and lr (linear regression). Generally mle is better fit
+    analysis.fit(method='lr')
+
+    # print shape parameter (Beta) and scale parameter (eta)
+    print(f'shape Parameter: {analysis.beta: .02f}')
+    print(f'Scale Parameter: {analysis.eta: .02f}')
+
+    # print values of different parameters confidence interval
+    analysis.stats
+
+    # generate Weibull probplot
+    analysis.probplot()
+
    
 
 
