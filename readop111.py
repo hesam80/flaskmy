@@ -44,7 +44,7 @@ def display_menu():
 	elif selected=="7":
 		weibull_predict()
 	elif selected=="8":
-		new_analyze()
+		analysis()
 
 
 def op_one():
@@ -328,7 +328,18 @@ def new_analyze():
     plt.show()
 
     # load dataset
-    specimen_strength = pd.read_csv('weibull.csv', header=None)
+    specimen_strength = pd.DataFrame({
+    
+    "index": [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
+    ],
+    "TTF": [ 
+        180, 450, 740, 1040, 1360, 1700, 2070, 2460, 2890, 3380, 3870, 4430, 5070 ,5790 ,6630, 7530, 8880, 10520, 12920, 17540
+
+    ]
+    
+    })
+    #specimen_strength = pd.read_csv('weibull.csv', header=None)
     specimen_strength.head()
 
     # perform weibull analysis
@@ -347,6 +358,41 @@ def new_analyze():
 
     # generate Weibull probplot
     analysis.probplot()
+
+def analysis():
+    from reliability.Probability_plotting import plotting_positions
+    from reliability.Distributions import Weibull_Distribution
+    from reliability.Probability_plotting import plot_points
+    import matplotlib.pyplot as plt
+    failures = [150,560,800,1720,5230,6890]
+    right_censored = [340,1130,2470,4210]
+    x,y=plotting_positions(failures=failures,right_censored=right_censored)
+
+    print('x =',x)
+    print('y =',y)
+    dist = Weibull_Distribution(alpha=100,beta=2)
+    data = dist.random_samples(1000,seed=1)
+
+    functions = ['PDF','CDF','SF','HF','CHF']
+    i = 0
+    for function in functions:
+        plt.subplot(151+i)
+        if function == 'PDF':
+            dist.PDF()
+        elif function == 'CDF':
+            dist.CDF()
+        elif function == 'SF':
+            dist.SF()
+        elif function == 'HF':
+            dist.HF()
+        elif function == 'CHF':
+            dist.CHF()
+        plot_points(failures=data,func=function)
+        plt.title(function)
+        i+=1
+    plt.gcf().set_size_inches(12,4)
+    plt.tight_layout()
+    plt.show()
 
    
 
