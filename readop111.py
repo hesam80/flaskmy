@@ -285,10 +285,10 @@ def weibull_predict():
     
     suspensions = [1.62876357, 1.62876357, 1.62876357, 1.62876357]
     # Weibull Analysis
-    x = Analysis(df=failures, ds=suspensions, show=True)
+    #x = Analysis(df=failures, ds=suspensions, show=True)
     
-    x.mrr()
-    x.mle()
+    #x.mrr()
+    #x.mle()
     df = pd.DataFrame({
     "TTF": [ 
         180, 450, 740, 1040, 1360, 1700, 2070, 2460, 2890, 3380, 3870, 4430, 5070 ,5790 ,6630, 7530, 8880, 10520, 12920, 17540
@@ -364,9 +364,11 @@ def analysis():
     from reliability.Distributions import Weibull_Distribution
     from reliability.Probability_plotting import plot_points
     import matplotlib.pyplot as plt
+    from reliability.Convert_data import xlsx_to_FR
+    data_from_excel = xlsx_to_FR(path=r'FR.xlsx')
     failures = [150,560,800,1720,5230,6890]
     right_censored = [340,1130,2470,4210]
-    x,y=plotting_positions(failures=failures,right_censored=right_censored)
+    x,y=plotting_positions(failures=data_from_excel.failures,right_censored=data_from_excel.right_censored)
 
     print('x =',x)
     print('y =',y)
@@ -387,7 +389,7 @@ def analysis():
             dist.HF()
         elif function == 'CHF':
             dist.CHF()
-        plot_points(failures=data,func=function)
+        plot_points(failures=data_from_excel.failures,func=function)
         plt.title(function)
         i+=1
     plt.gcf().set_size_inches(12,4)
