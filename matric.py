@@ -11,15 +11,6 @@ def matric():
 
 def tahlil():
 
-   df=read_excel('comptst.xlsx',0)
-   ind=df.index
-   decprition=df['dec']
-   part=df['pn']
-   serof=df['snf']
-   seron=df['snn']
-   #integrate=df['snf'].mean()
-   print(df.head())
-   #print("majmoo is:", integrate)
 
 def zoj(n):
    num = random.randint(1,int(n))
