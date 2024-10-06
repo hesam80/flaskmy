@@ -226,8 +226,8 @@ S/N ON:19956."""
 		print("ok")
 		print("Toole string ",action, len(actions))
 
-	#length=len(tag)
-	#print(tag+str(length))
+	length=len(tag)
+	print(tag+str(length))
 	print("Toole string tease: ",len(tease))
 	print("tease:",actions[1])
 	filter_tag=tease[(-1)*(int(tag.find('P/N OFF:'))):]
