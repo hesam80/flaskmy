@@ -1,5 +1,6 @@
 import numpy as np
-from pandas import  read_excel
+
+
 import random
 def matric():
    c=np.empty(8)
@@ -10,7 +11,7 @@ def matric():
    print("matris f=", f)
 
 def tahlil():
-
+   pass
 
 def zoj(n):
    num = random.randint(1,int(n))
