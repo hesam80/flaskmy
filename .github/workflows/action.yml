@@ -1,0 +1,28 @@
+name: CI to Docker Hub
+on:
+  schedule:
+    - cron: '0 10 * * *' # everyday at 10am
+  # Trigger the workflow on push or pull request,
+  # but only for the main branch
+  push:
+    branches:
+      - extension
+jobs: 
+  build:
+    runs-on: ubuntu-latest
+  default: 
+    run: 
+      working-directory: ./scripts_action
+
+    steps:
+
+      - name: Check Out Repo 
+        uses: actions/checkout@v4
+
+      - name: Make the script files executable
+        run: chmod +x myscript.sh
+
+      - name: run scripts_action
+        run: myscript.sh
+    
+      
