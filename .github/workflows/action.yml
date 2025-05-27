@@ -15,10 +15,13 @@ jobs:
       working-directory: ./scripts_action
 
     steps:
+
       - name: Check Out Repo 
         uses: actions/checkout@v4
+
       - name: Make the script files executable
         run: chmod +x myscript.sh
+
       - name: run scripts_action
         run: myscript.sh
     
