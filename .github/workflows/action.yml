@@ -10,9 +10,7 @@ on:
 jobs: 
   build:
     runs-on: ubuntu-latest
-  default: 
-    run: 
-      working-directory: ./scripts_action
+
 
     steps:
 
@@ -20,9 +18,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Make the script files executable
-        run: chmod +x myscript.sh
+        run: chmod +x scripts_action/myscript.sh
 
       - name: run scripts_action
-        run: myscript.sh
+        run: scripts_action/myscript.sh
     
       
