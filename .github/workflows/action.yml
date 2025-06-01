@@ -21,9 +21,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Make the script files executable
-        run: chmod +x scripts/myscript.sh
+        run: chmod +x ./myscript.sh
 
       - name: run scripts_action
-        run: scripts/myscript.sh
+        run: ./myscript.sh
     
       
