@@ -1,3 +1,4 @@
 #!/bin/bash
 echo "hi"
-pwd
+python --version
+whereis python
